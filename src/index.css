@@ -1,3 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+.active{
+  @apply bg-primary text-white px-5
+}
