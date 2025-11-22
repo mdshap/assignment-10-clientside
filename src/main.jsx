@@ -8,6 +8,9 @@ import AddBook from "./assets/components/BooksManagement/AddBook";
 import Register from "./assets/components/UserManagement/Register";
 import Login from "./assets/components/UserManagement/Login";
 import AuthProvider from "./assets/components/Contexts/AuthProvider";
+import BookDetails from "./assets/components/BooksManagement/BookDetails";
+import MyBooks from "./assets/components/BooksManagement/MyBooks";
+import AllBooks from "./assets/components/BooksManagement/AllBooks";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +32,24 @@ const router = createBrowserRouter([
       {
         path: "/add-book",
         Component: AddBook,
+      },
+      {
+        path: "/all-books",
+        Component: AllBooks
+      },
+      {
+        path: "/book-details",
+        Component: BookDetails,
+      },
+      {
+        path: "/myBooks",
+        Component: MyBooks,
+      },
+      {
+        path: "/update-book/:id",
+      },
+      {
+        path: "/delete-book/:id",
       },
     ],
   },

@@ -9,7 +9,6 @@ import { MdLogout } from "react-icons/md";
 
 const Navbar = () => {
   const { user, loading, signOutUser, setUser } = use(AuthContext);
-
   const handleSignOut = () => {
     signOutUser()
       .then((result) => {
@@ -25,7 +24,7 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/allProducts">All Books</NavLink>
+        <NavLink to="/all-books">All Books</NavLink>
       </li>
       {user ? (
         ""
@@ -94,12 +93,24 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <a onClick={handleSignOut} className="btn btn-secondary hover:bg-secondary text-[11px] md:text-[14px] hover:text-white bg-white text-secondary">
-              Logout <MdLogout/>
-            </a>
+            <div className="flex gap-2 justify-center items-center">
+              <img
+                className="rounded-full object-cover w-[40px] h-[40px]"
+                src="/public/about.png"
+                alt="user_img"
+                title={`User: ${user.displayName}`}
+              />
+              <a
+                onClick={handleSignOut}
+                className="btn btn-secondary hover:bg-secondary text-[11px] md:text-[14px] hover:text-white bg-white text-secondary">
+                Logout <MdLogout />
+              </a>
+            </div>
           ) : (
             <div className="flex gap-2">
-              <Link className="btn px-3 md:px-4 text-[11px] md:text-[14px] btn-secondary" to="/login">
+              <Link
+                className="btn px-3 md:px-4 text-[11px] md:text-[14px] btn-secondary"
+                to="/login">
                 Login <FaUser />
               </Link>
               <Link
