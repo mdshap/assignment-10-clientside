@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <div
-      className="relative mx-auto w-full max-w-[1400px] mt-16"
+      className="relative mx-auto w-full max-w-[1600px] mt-16"
       style={{
         backgroundImage: "url('/public/about.png')",
         backgroundSize: "cover",

@@ -3,8 +3,8 @@ import React from "react";
 import { Link } from "react-router";
 
 const Banner = ({
-  leftBg = "/public/booklibrary.png",
-  rightBg = "/public/createbooks.png",
+  leftBg = "booklibrary.png",
+  rightBg = "createbooks.png",
   className = "",
 }) => {
   const bgStyle = (url) =>
@@ -50,7 +50,7 @@ const Banner = ({
         </div>
 
         <div
-          className="relative flex-1 min-h-[220px] md:min-h-[320px] transform transition duration-700 hover:scale-[1.02]"
+          className="relative flex-1 h-[500px] min-h-[220px] md:min-h-[320px] transform transition duration-700 hover:scale-[1.02]"
           style={
             rightBg
               ? bgStyle(rightBg)

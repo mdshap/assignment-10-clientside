@@ -96,7 +96,7 @@ const Navbar = () => {
             <div className="flex gap-2 justify-center items-center">
               <img
                 className="rounded-full object-cover w-[40px] h-[40px]"
-                src="/public/about.png"
+                src={`${user.photoURL}`}
                 alt="user_img"
                 title={`User: ${user.displayName}`}
               />

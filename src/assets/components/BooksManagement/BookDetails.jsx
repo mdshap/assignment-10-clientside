@@ -1,6 +1,7 @@
 import React from 'react';
 
-const BookDetails = () => {
+const BookDetails = ({params}) => {
+    console.log(params)
     return (
         <div>
             

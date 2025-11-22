@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         Component: AllBooks
       },
       {
-        path: "/book-details",
+        path: "/book-details/:id",
         Component: BookDetails,
       },
       {
