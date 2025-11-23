@@ -2,12 +2,14 @@ import axios from 'axios';
 import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Contexts/AuthContext';
 import MyBookCard from './MyBookCard';
+import TableBody from './TableBody';
+import MyBooksBody from './MyBooksBody';
 
 const MyBooks = () => {
 
     const {user} = use(AuthContext)
-
     const [myBooks, setMyBooks] = useState([])
+
 
     useEffect(()=>{
         axios.get(`http://localhost:3000/my-books/${user.email}`)
@@ -15,18 +17,48 @@ const MyBooks = () => {
             setMyBooks(res.data)
             console.log(res.data)
         })
-    }, [myBooks, user.email])
+    }, [user.email])
+
+    const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:3000/my-books/${id}/${user.email}`)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => console.log(error));
+
+      const updatedBooksAfterDelete = myBooks.filter(book=> book?._id !==id)
+      setMyBooks(updatedBooksAfterDelete)
+  };
+
     return (
-        <div className='grid grid-cols-3'>
-            {
-                myBooks.map(book=>{
-                    return(
-                    <MyBookCard book={book}></MyBookCard>
-                    )
-                })
-            }
-            
-        </div>
+            <div>
+              <div className="overflow-x-auto">
+                <table className="table">
+                  <thead className="">
+                    <tr>
+                      <th className="hidden lg:block">
+                        <label>
+                          S.l No.
+                        </label>
+                      </th>
+                      <th> Book Name & Author</th>
+                      <th>Rating</th>
+                      <th className="hidden sm:block">Genre</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+        
+                  {
+                    myBooks.map((book, index)=>{
+                      return(
+                    <MyBooksBody book={book} count={index+1} handleDelete={handleDelete}></MyBooksBody>)
+                  })
+                      
+                  }
+                </table>
+              </div>
+            </div>
     );
 };
 

@@ -1,10 +1,17 @@
 import axios from "axios";
-import React, { use } from "react";
+import React, { use, useEffect, useRef } from "react";
 import { AuthContext } from "../Contexts/AuthContext";
 
-const AddBookForm = () => {
-
+const AddBookForm = ({setBookAdded, resetForm}) => {
     const {user} = use(AuthContext)
+
+    const formRef = useRef();
+
+    useEffect(()=>{
+        if(resetForm){
+            formRef.current.reset();
+    }
+    }, [resetForm])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +27,7 @@ const AddBookForm = () => {
     };
 
     axios.post('http://localhost:3000/books', bookInfo)
+    setBookAdded(true)
   };
 
   
@@ -31,6 +39,7 @@ const AddBookForm = () => {
       </h2>
 
       <form
+      ref={formRef}
         onSubmit={handleSubmit}
         className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Title */}
@@ -138,7 +147,7 @@ const AddBookForm = () => {
         <div className="md:col-span-2 flex justify-center mt-4">
           <button
             type="submit"
-            className="btn bg-secondary text-white px-8 py-3 text-lg font-medium hover:opacity-90 transition">
+            className="btn bg-primary text-white px-8 py-8 text-lg w-full  hover:opacity-90 transition">
             Add Book
           </button>
         </div>
