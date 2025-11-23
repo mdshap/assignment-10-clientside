@@ -15,7 +15,7 @@ const MyBooks = () => {
             setMyBooks(res.data)
             console.log(res.data)
         })
-    }, [myBooks])
+    }, [myBooks, user.email])
     return (
         <div className='grid grid-cols-3'>
             {

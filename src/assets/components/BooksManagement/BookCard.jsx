@@ -16,7 +16,7 @@ const BookCard = ({ book }) => {
       />
 
       <div className="p-4">
-        <h3 className="text-xl font-semibold text-primary line-clamp-2 min-h-[48px]">
+        <h3 className="text-xl font-semibold text-primary line-clamp-2 min-h-12">
           {book?.title}
         </h3>
 

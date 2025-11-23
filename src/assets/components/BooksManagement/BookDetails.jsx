@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 import Loader from "../Loader/Loader";
 
 const BookDetails = () => {
@@ -42,7 +42,7 @@ const BookDetails = () => {
                   <img
                     src={book.coverImage}
                     alt={book.title}
-                    className="w-full h-auto object-cover aspect-[2/3]"
+                    className="w-full h-auto object-cover aspect-2/3"
                   />
                 </div>
 

@@ -24,7 +24,7 @@ const Banner = ({
       <div className="flex flex-col md:flex-row gap-4 md:gap-6 rounded-2xl overflow-hidden shadow-lg">
         
         <div
-          className="relative flex-1 min-h-[220px] md:min-h-[320px] transform transition duration-700 hover:scale-[1.02]"
+          className="relative flex-1 min-h-[220px] md:min-h-80 transform transition duration-700 hover:scale-[1.02]"
           style={bgStyle(leftBg)}>
           
           <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent transition duration-700 hover:from-black/55" />
@@ -50,7 +50,7 @@ const Banner = ({
         </div>
 
         <div
-          className="relative flex-1 h-[400px] min-h-[220px] md:min-h-[320px] transform transition duration-700 hover:scale-[1.02]"
+          className="relative flex-1 h-[400px] min-h-[220px] md:min-h-80 transform transition duration-700 hover:scale-[1.02]"
           style={
             rightBg
               ? bgStyle(rightBg)

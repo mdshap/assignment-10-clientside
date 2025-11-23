@@ -131,7 +131,7 @@ const Navbar = () => {
           {user ? (
             <div className="flex gap-2 justify-center items-center">
               <img
-                className="rounded-full object-cover w-[40px] h-[40px]"
+                className="rounded-full object-cover w-10 h-10"
                 src={`${user.photoURL}`}
                 alt="user_img"
                 title={`User: ${user?.displayName}`}
