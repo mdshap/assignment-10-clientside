@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../Contexts/AuthContext";
@@ -9,6 +9,7 @@ import { MdLogout } from "react-icons/md";
 
 const Navbar = () => {
   const { user, loading, signOutUser, setUser } = use(AuthContext);
+
   const handleSignOut = () => {
     signOutUser()
       .then((result) => {
@@ -16,6 +17,29 @@ const Navbar = () => {
         setUser(null);
       })
       .catch((error) => console.log(error.message));
+  };
+
+  const [theme, setTheme] = useState(() => {
+    const saved =
+      typeof window !== "undefined" ? localStorage.getItem("theme") : null;
+    if (saved) return saved;
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      return "dark";
+    }
+    return "light";
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((t) => (t === "dark" ? "light" : "dark"));
   };
 
   const links = (
@@ -46,10 +70,23 @@ const Navbar = () => {
             <NavLink to="/add-book">Add Book</NavLink>
           </li>
           <li>
-            <NavLink to="/my-books">My Books</NavLink>
+            <NavLink to="/myBooks">My Books</NavLink>
           </li>
         </>
       )}
+      <>
+        <div className="flex items-center gap-3">
+          <input
+            type="checkbox"
+            className="toggle toggle-primary"
+            checked={theme === "dark"}
+            onChange={toggleTheme}
+          />
+          <span className="text-sm font-medium">
+            {theme === "dark" ? "Dark" : "Light"}
+          </span>
+        </div>
+      </>
     </div>
   );
 
@@ -65,13 +102,12 @@ const Navbar = () => {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor">
-                {" "}
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
+                />
               </svg>
             </div>
             <ul
@@ -81,9 +117,9 @@ const Navbar = () => {
             </ul>
           </div>
           <a
-            className="btn btn-ghost text-xl font-bold hover:bg-transparent hover:border-0"
+            className="btn btn-ghost text-xl font-bold hover:bg-transparent hover:border-0 flex items-center"
             href="/">
-            <FaBookOpen />
+              <FaBookOpen></FaBookOpen>
             Books<span className="text-secondary">Haven</span>
           </a>
         </div>
@@ -98,11 +134,11 @@ const Navbar = () => {
                 className="rounded-full object-cover w-[40px] h-[40px]"
                 src={`${user.photoURL}`}
                 alt="user_img"
-                title={`User: ${user.displayName}`}
+                title={`User: ${user?.displayName}`}
               />
               <a
                 onClick={handleSignOut}
-                className="btn btn-secondary hover:bg-secondary text-[11px] md:text-[14px] hover:text-white bg-white text-secondary">
+                className="btn btn-secondary hover:bg-secondary text-[11px] md:text-[14px] hover:text-white bg-transparent text-secondary">
                 Logout <MdLogout />
               </a>
             </div>

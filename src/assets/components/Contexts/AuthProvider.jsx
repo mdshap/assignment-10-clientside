@@ -20,6 +20,7 @@ const AuthProvider = ({ children }) => {
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [registerLoading, setRegisterLoading] = useState(false)
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -32,7 +33,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const signInWithGoogle = ()=>{
-    setLoading(true)
+    setRegisterLoading(true)
     return signInWithPopup(auth, googleProvider)
   }
 
@@ -60,6 +61,8 @@ const AuthProvider = ({ children }) => {
     setUser,
     loading,
     setLoading,
+    registerLoading,
+    setRegisterLoading,
   };
 
   return <AuthContext value={authInfo}>{children}</AuthContext>;

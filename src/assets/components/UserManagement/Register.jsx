@@ -4,16 +4,16 @@ import { Navigate } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
 
 const Register = () => {
-  const { user, loading, signInWithGoogle } = use(AuthContext);
+  const { user, setRegisterLoading, signInWithGoogle } = use(AuthContext);
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
         console.log(result.user);
         const newUser = {
-          name: result.user.displayName,
-          email: result.user.email,
-          image: result.user.photoURL,
+          name: result.user?.displayName,
+          email: result.user?.email,
+          image: result.user?.photoURL,
         };
 
         //create user in the database
@@ -25,11 +25,10 @@ const Register = () => {
           body: JSON.stringify(newUser),
         })
           .then((res) => res.json())
-          .then((data) => {
-            console.log("data after user signin", data);
-          });
+          .catch(() => setRegisterLoading(false));
+          
       })
-      .catch((error) => console.log(error.message));
+      
   };
 
   if (user){
@@ -41,9 +40,6 @@ const Register = () => {
 
   return (
     <>
-      {loading ? (
-        <p>Loading</p>
-      ) : (
         <>
           {user ? (
             () => alert("You Are Already Logged In")
@@ -113,7 +109,7 @@ const Register = () => {
             </div>
           )}
         </>
-      )}
+      )
     </>
   );
 };

@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router";
 
-const BookCard = ({ book }) => {
+const MyBookCard = ({ book }) => {
   const r = Math.max(0, Math.min(5, Math.round(book?.rating)));
 
   console.log(book);
 
-  const addBook = () => {};
 
   return (
-    <article className="w-full max-w-[350px] bg-white  rounded-xl shadow-md overflow-hidden transform transition hover:-translate-y-1 hover:shadow-xl">
+    <article className="w-full max-w-[350px] bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition hover:-translate-y-1 hover:shadow-xl">
       <div
         className="h-140 bg-center bg-cover"
         style={{ backgroundImage: `url(${book?.coverImage})` }}
@@ -42,19 +41,17 @@ const BookCard = ({ book }) => {
 
         <div className="mt-4 flex gap-3">
 
-          <Link to={`/book-details/${book?._id}`} className="flex-1 inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium bg-secondary text-white hover:bg-indigo-700 transition">Details</Link>
+          <Link to={`/book-details/${book?._id}`} className="flex-1 inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium bg-transparent border-secondary text-secondary border-2 hover:bg-indigo-700 transition">Details</Link>
 
-          <button
-            onClick={addBook}
-            className="flex-1 inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium border border-secondary text-secondary hover:bg-indigo-50 dark:hover:bg-indigo-900/40 transition">
-            <a 
-            target="_blank"
-            href="https://vidyaprabodhinicollege.edu.in/VPCCECM/ebooks/ENGLISH%20LITERATURE/Harry%20potter/(Book%207)%20Harry%20Potter%20And%20The%20Deathly%20Hallows.pdf">Read</a>
-          </button>
+        </div>
+        <div className="flex mt-2 gap-5 justify-between">
+            <Link to={`/book-details/${book?._id}`} className="flex-1 inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium bg-green-600 text-white hover:bg-indigo-700 transition">Update</Link>
+            <Link to={`/book-details/${book?._id}`} className="flex-1 inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium bg-red-500 text-white hover:bg-indigo-700 transition">Delete</Link>
+
         </div>
       </div>
     </article>
   );
 };
 
-export default BookCard;
+export default MyBookCard;

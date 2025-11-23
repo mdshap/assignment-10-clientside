@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const BookOfTheWeek = () => {
   return (
@@ -7,8 +8,7 @@ const BookOfTheWeek = () => {
         Book of the <span className="text-secondary">Week</span>
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 md:p-10">
-        {/* IMAGE */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-950  rounded-2xl shadow-md p-6 md:p-10">
         <div className="flex items-center justify-center">
           <img
             src="https://www.pluggedin.com/wp-content/uploads/2020/01/harry-potter-and-the-deathly-hallows-cover-image-692x1024.jpeg"
@@ -17,9 +17,8 @@ const BookOfTheWeek = () => {
           />
         </div>
 
-        {/* TEXT SECTION */}
         <div className="flex flex-col justify-center">
-          <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+          <h3 className="text-2xl md:text-4xl font-semibold text-secondary">
             Harry Potter and The Deathly Hallows
           </h3>
 
@@ -36,12 +35,16 @@ const BookOfTheWeek = () => {
           </p>
 
           <div className="mt-6 flex gap-3">
-            <button className="px-5 py-2 rounded-md bg-secondary text-white font-medium hover:opacity-90 transition">
-              Read Now
+            <button className="btn border-0 px-5 py-2 rounded-md bg-secondary text-white font-medium hover:opacity-90 transition">
+              <a
+                target="_blank"
+                href="https://vidyaprabodhinicollege.edu.in/VPCCECM/ebooks/ENGLISH%20LITERATURE/Harry%20potter/(Book%207)%20Harry%20Potter%20And%20The%20Deathly%20Hallows.pdf">
+                Read Now
+              </a>
             </button>
 
             <button className="px-5 py-2 rounded-md border border-secondary text-secondary font-medium hover:bg-secondary hover:text-white transition">
-              Add to List
+              <Link to="/book-details/6921de5351571c1b3655955f">Details</Link>
             </button>
           </div>
         </div>
