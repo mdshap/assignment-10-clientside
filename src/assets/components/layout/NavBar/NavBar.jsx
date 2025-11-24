@@ -6,6 +6,7 @@ import { FaUser } from "react-icons/fa";
 import { MdOutlineAssignment } from "react-icons/md";
 import { FaBookOpen } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
   const { user, loading, signOutUser, setUser } = use(AuthContext);
@@ -57,9 +58,14 @@ const Navbar = () => {
           {loading ? (
             ""
           ) : (
+            <>
             <li>
               <NavLink to="/register">Register</NavLink>
             </li>
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+            </>
           )}
         </>
       )}

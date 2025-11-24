@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { use } from 'react';
 import Banner from './Banner';
 import PopularBooks from './PopularBooks';
 import BookCard from '../BooksManagement/BookCard';
 import BookOfTheWeek from './BookOfTheWeek';
 import About from './About';
+import { AuthContext } from '../Contexts/AuthContext';
 
 const Home = () => {
+    const { user } = use(AuthContext)
+    console.log(user)
+    
     return (
         <div>
             <Banner className="my-15"></Banner>

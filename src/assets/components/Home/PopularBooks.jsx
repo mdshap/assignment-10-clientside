@@ -18,7 +18,6 @@ const PopularBooks = () => {
       .get(`http://localhost:3000/${showAll ? "books" : "popular-books"}`)
       .then((res) => {
         setBooks(res.data);
-        console.log(res.data);
         setBooksLoading(false)
         
       })
@@ -43,7 +42,7 @@ const PopularBooks = () => {
 
       <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
         {books.map((book) => (
-          <BookCard book={book}></BookCard>
+          <BookCard key={book._id} book={book}></BookCard>
         ))}
       </div>
       

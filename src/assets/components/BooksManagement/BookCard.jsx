@@ -4,7 +4,6 @@ import { Link } from "react-router";
 const BookCard = ({ book }) => {
   const r = Math.max(0, Math.min(5, Math.round(book?.rating)));
 
-  console.log(book);
 
   const addBook = () => {};
 

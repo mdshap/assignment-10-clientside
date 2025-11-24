@@ -16,7 +16,6 @@ const AllBooks = () => {
       .get('http://localhost:3000/books')
       .then((res) => {
         setBooks(res.data);
-        console.log(res.data);
         setLoading(false)
       })
       .catch((error) => {
@@ -50,7 +49,7 @@ const AllBooks = () => {
           {
             books.map((book, index)=>{
               return(
-            <TableBody book={book} count={index+1}></TableBody>)
+            <TableBody key={book._id} book={book} count={index+1}></TableBody>)
           })
               
           }

@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { use } from "react";
-import { Link, Navigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
-import { FaEye, FaEyeSlash, FaRegEyeSlash } from "react-icons/fa";
+import { FaEye, FaRegEyeSlash } from "react-icons/fa";
+import toast from "react-hot-toast";
+import { auth } from "../firebase/firebase.init";
 
 const Register = () => {
-  const { user, setRegisterLoading, signInWithGoogle } = use(AuthContext);
-  const [showPass, setShowPass]= useState(false)
+  const toastShownRef = useRef(false);
+  const { user, createUser, setRegisterLoading, signInWithGoogle, signOut } =
+    use(AuthContext);
+  const [showPass, setShowPass] = useState(false);
+  const [errorPass, setErrorPass] = useState("");
+  const [registerSuccess, setRegisterSuccess] = useState(false)
+
+  const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
@@ -28,12 +36,46 @@ const Register = () => {
   };
 
   const handleEmailRegister = (e) => {
-    const email = e.targer.email.value;
+    e.preventDefault();
+
+    const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    const email = e.target.email.value;
     const name = e.target.name.value;
     const password = e.target.password.value;
+
+    if (!passwordPattern.test(password)) {
+      setErrorPass(
+        "Invalid Password! Your password must have 1 Upper & Lower Case and 1 Special Character"
+      );
+      return;
+    }
+
+    setErrorPass("");
+    createUser(name, email, password)
+    .then((result) => {
+      console.log("Created User", result?.user);
+      setRegisterSuccess(true)
+    })
+    .catch(error=>{
+      toast.error('An Error')
+      console.log(error)
+    });
   };
 
-  if (user) return <Navigate to="/" replace />;
+  useEffect(() => {
+    if (user && !toastShownRef.current) {
+    toastShownRef.current = true;
+    navigate("/", { replace: true });
+  }}, [user, navigate]);
+
+    useEffect(() => {
+    if (registerSuccess){ 
+      signOut(auth)
+      toast.success('Successfully Created Account')
+      navigate("/login", { replace: true })
+  };
+  }, [registerSuccess, navigate]);
+
 
   return (
     <div
@@ -53,17 +95,18 @@ const Register = () => {
               <div>
                 <label className="label text-sm text-white">Full Name</label>
                 <input
+                  required
                   type="text"
                   name="name"
                   className="input input-bordered w-full placeholder-gray-400"
                   placeholder="Your full name"
                 />
-
               </div>
 
               <div>
                 <label className="label text-sm  text-white">Email</label>
                 <input
+                  required
                   type="email"
                   name="email"
                   className="input input-bordered w-full placeholder-gray-400"
@@ -74,20 +117,26 @@ const Register = () => {
               <div>
                 <label className="label text-sm  text-white">Password</label>
                 <div className="flex relative justify-center items-center">
-                <input
-                  type={showPass ? 'text' : 'password'}
-                  name="password"
-                  className="input input-bordered w-full placeholder-gray-400"
-                  placeholder="Password"
-                />
-                { showPass ? <FaRegEyeSlash
-                onClick={()=>setShowPass(!showPass)}
-                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-950 text-lg cursor-pointe"/> :
-                <FaEye
-                onClick={()=>setShowPass(!showPass)}
-                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-950 text-lg cursor-pointe"/>
-                }
+                  <input
+                    required
+                    type={showPass ? "text" : "password"}
+                    name="password"
+                    className="input input-bordered w-full placeholder-gray-400"
+                    placeholder="Password"
+                  />
+                  {showPass ? (
+                    <FaRegEyeSlash
+                      onClick={() => setShowPass(!showPass)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-950 text-lg cursor-pointe"
+                    />
+                  ) : (
+                    <FaEye
+                      onClick={() => setShowPass(!showPass)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-950 text-lg cursor-pointe"
+                    />
+                  )}
                 </div>
+                <div className="text-red-600 text-center">{errorPass}</div>
               </div>
 
               <button className="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold shadow hover:scale-[1.01] transition">
