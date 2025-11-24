@@ -139,7 +139,7 @@ const Navbar = () => {
               <a
                 onClick={handleSignOut}
                 className="btn btn-secondary hover:bg-secondary text-[11px] md:text-[14px] hover:text-white bg-transparent text-secondary">
-                Logout <MdLogout />
+                <p className="hidden sm:block">Logout</p> <MdLogout />
               </a>
             </div>
           ) : (

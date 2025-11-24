@@ -11,6 +11,8 @@ import AuthProvider from "./assets/components/Contexts/AuthProvider";
 import BookDetails from "./assets/components/BooksManagement/BookDetails";
 import MyBooks from "./assets/components/BooksManagement/MyBooks";
 import AllBooks from "./assets/components/BooksManagement/AllBooks";
+import PrivateRoute from "./assets/components/PrivateRoute/PrivateRoute";
+import NotFound from "./assets/components/Pages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +33,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-book",
-        Component: AddBook,
+        element: <PrivateRoute>
+          <AddBook></AddBook>
+        </PrivateRoute>
       },
       {
         path: "/all-books",
@@ -39,11 +43,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/book-details/:id",
-        Component: BookDetails,
+        element: <PrivateRoute>
+          <BookDetails></BookDetails>
+        </PrivateRoute>
       },
       {
         path: "/myBooks",
-        Component: MyBooks,
+        element: <PrivateRoute>
+          <MyBooks></MyBooks>
+        </PrivateRoute>
       },
       {
         path: "/update-book/:id",
@@ -53,6 +61,11 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '*',
+    Component: NotFound
+
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(

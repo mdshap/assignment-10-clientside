@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
+import UpdateModal from "../../Modals/UpdateModal";
 
 const MyBooksBody = ({ book, count, handleDelete }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [updateModalOpen, setUpdateModalOpen] = useState(false)
 
   return (
     <tbody>
@@ -29,6 +31,13 @@ const MyBooksBody = ({ book, count, handleDelete }) => {
           </div>
         </div>
       </dialog>
+
+
+      <div>
+        <UpdateModal book={book} updateModalOpen={updateModalOpen} setUpdateModalOpen={setUpdateModalOpen}></UpdateModal>
+      </div>
+
+
       {/* row 1 */}
       <tr className="">
         <td className="hidden lg:block">{count}</td>
@@ -57,7 +66,7 @@ const MyBooksBody = ({ book, count, handleDelete }) => {
         <td>
           <div className="flex flex-col mt-2 gap-5 justify-between">
             <Link
-              to={`/book-details/${book?._id}`}
+            onClick={()=>setUpdateModalOpen(true)}
               className="flex-1 inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium bg-green-600 text-white hover:bg-indigo-700 transition">
               Update
             </Link>

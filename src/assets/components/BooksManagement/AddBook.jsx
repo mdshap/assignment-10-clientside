@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddBookForm from "./AddBookForm";
 import { Link } from "react-router";
 
@@ -7,9 +7,11 @@ const AddBook = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [resetForm, setResetForm] = useState(false);
 
+
   useEffect(() => {
     if (bookAdded) {
       setModalOpen(true);
+      setResetForm(false)
     }
   }, [bookAdded]);
 

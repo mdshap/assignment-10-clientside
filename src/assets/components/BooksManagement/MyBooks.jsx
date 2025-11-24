@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Contexts/AuthContext';
-import MyBookCard from './MyBookCard';
-import TableBody from './TableBody';
 import MyBooksBody from './MyBooksBody';
 
 const MyBooks = () => {

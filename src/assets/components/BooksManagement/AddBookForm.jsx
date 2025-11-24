@@ -2,16 +2,17 @@ import axios from "axios";
 import React, { use, useEffect, useRef } from "react";
 import { AuthContext } from "../Contexts/AuthContext";
 
-const AddBookForm = ({setBookAdded, resetForm}) => {
-    const {user} = use(AuthContext)
+const AddBookForm = ({ setBookAdded, resetForm }) => {
+  const { user } = use(AuthContext);
 
-    const formRef = useRef();
+  const formRef = useRef();
 
-    useEffect(()=>{
-        if(resetForm){
-            formRef.current.reset();
+  useEffect(() => {
+    if (resetForm) {
+      formRef.current.reset();
     }
-    }, [resetForm])
+    setBookAdded(false);
+  }, [resetForm]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,17 +21,16 @@ const AddBookForm = ({setBookAdded, resetForm}) => {
       title: e.target.title.value,
       author: e.target.author.value,
       genre: e.target.genre.value,
-      rating: e.target.rating.value,
+      rating: parseFloat(e.target.rating.value),
       summary: e.target.summary.value,
       coverImage: e.target.coverImage.value,
       userEmail: e.target.userEmail.value,
+      userName: e.target.userName.value,
     };
 
-    axios.post('http://localhost:3000/books', bookInfo)
-    setBookAdded(true)
+    axios.post("http://localhost:3000/books", bookInfo);
+    setBookAdded(true);
   };
-
-  
 
   return (
     <div className="w-full max-w-3xl mx-auto bg-transparent shadow-lg border-3 rounded-xl p-8 my-10">
@@ -39,7 +39,7 @@ const AddBookForm = ({setBookAdded, resetForm}) => {
       </h2>
 
       <form
-      ref={formRef}
+        ref={formRef}
         onSubmit={handleSubmit}
         className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Title */}
@@ -73,9 +73,7 @@ const AddBookForm = ({setBookAdded, resetForm}) => {
 
         {/* Genre */}
         <div className="flex flex-col">
-          <label className="text-sm font-medium text-primary mb-1">
-            Genre
-          </label>
+          <label className="text-sm font-medium text-primary mb-1">Genre</label>
           <input
             type="text"
             name="genre"
@@ -128,12 +126,26 @@ const AddBookForm = ({setBookAdded, resetForm}) => {
             className="textarea textarea-bordered w-full h-32 bg-transparent"></textarea>
         </div>
 
-        {/* User Email */}
-        <div className="md:col-span-2 flex flex-col">
-          <label className="text-sm font-medium text-primary mb-1">
+        <div className="flex flex-col">
+          <label className="text-sm font-medium  text-primary mb-1">
+            Your Name
+          </label>
+          <input
+            type="text"
+            name="userName"
+            defaultValue={user?.displayName}
+            required
+            placeholder="name@example.com"
+            className="input input-bordered w-full bg-transparent"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-sm font-medium  text-primary mb-1">
             Your Email
           </label>
           <input
+            disabled
             type="email"
             name="userEmail"
             defaultValue={user?.email}
@@ -142,6 +154,7 @@ const AddBookForm = ({setBookAdded, resetForm}) => {
             className="input input-bordered w-full bg-transparent"
           />
         </div>
+
 
         {/* Submit Button */}
         <div className="md:col-span-2 flex justify-center mt-4">
