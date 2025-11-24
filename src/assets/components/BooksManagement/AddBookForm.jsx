@@ -4,7 +4,6 @@ import { AuthContext } from "../Contexts/AuthContext";
 
 const AddBookForm = ({ setBookAdded, resetForm }) => {
   const { user } = use(AuthContext);
-
   const formRef = useRef();
 
   useEffect(() => {
@@ -17,6 +16,16 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const image = e.target.coverImage.files[0];
+    const formData = new FormData();
+    formData.append("coverImage", image);
+    axios
+      .post(
+        "https://api.imgbb.com/1/upload?key=3de4075d171467fb67c68c77755853ba",
+        formData
+      )
+      .then((res) => console.log(res.data))
+      .catch((error) => console.log(error.message));
     const bookInfo = {
       title: e.target.title.value,
       author: e.target.author.value,
@@ -103,14 +112,13 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
         {/* Cover Image URL */}
         <div className="md:col-span-2 flex flex-col">
           <label className="text-sm font-medium text-primary mb-1">
-            Cover Image URL
+            Cover Image
           </label>
           <input
-            type="url"
+            type="file"
             name="coverImage"
             required
-            placeholder="https://example.com/cover.jpg"
-            className="input input-bordered w-full bg-transparent"
+            className="border border-gray-300 rounded-xl p-3 w-full bg-white shadow-sm file:mr-4 file:py-1 file:px-10 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700"
           />
         </div>
 
@@ -154,7 +162,6 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
             className="input input-bordered w-full bg-transparent"
           />
         </div>
-
 
         {/* Submit Button */}
         <div className="md:col-span-2 flex justify-center mt-4">

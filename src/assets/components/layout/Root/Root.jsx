@@ -4,6 +4,7 @@ import { Outlet } from 'react-router';
 import { AuthContext } from '../../Contexts/AuthContext';
 import Loader from '../../Loader/Loader';
 import ReactToaster from '../../ReactToaster';
+import Footer from '../Footer/Footer';
 
 const Root = () => {
     const {loading} = use(AuthContext)
@@ -16,6 +17,7 @@ const Root = () => {
             <NavBar/>
             <ReactToaster></ReactToaster>
             <Outlet/>
+            <Footer/>
         </div>
     );
 };
