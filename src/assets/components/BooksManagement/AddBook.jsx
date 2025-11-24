@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AddBookForm from "./AddBookForm";
 import { Link } from "react-router";
+import toast from "react-hot-toast";
 
 const AddBook = () => {
   const [bookAdded, setBookAdded] = useState(false);
@@ -12,6 +13,7 @@ const AddBook = () => {
     if (bookAdded) {
       setModalOpen(true);
       setResetForm(false)
+      toast.success('The Book Has Been Added')
     }
   }, [bookAdded]);
 

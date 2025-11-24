@@ -4,3 +4,33 @@
 .active{
   @apply bg-primary text-white px-5
 }
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.8s ease forwards;
+}

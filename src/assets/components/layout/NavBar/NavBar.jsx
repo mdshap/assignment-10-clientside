@@ -6,7 +6,6 @@ import { FaUser } from "react-icons/fa";
 import { MdOutlineAssignment } from "react-icons/md";
 import { FaBookOpen } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
-import toast from 'react-hot-toast';
 
 const Navbar = () => {
   const { user, loading, signOutUser, setUser } = use(AuthContext);
@@ -40,7 +39,7 @@ const Navbar = () => {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((t) => (t === "dark" ? "light" : "dark"));
+    setTheme((theme) => (theme === "dark" ? "light" : "dark"));
   };
 
   const links = (
@@ -88,7 +87,7 @@ const Navbar = () => {
             checked={theme === "dark"}
             onChange={toggleTheme}
           />
-          <span className="text-sm font-medium">
+          <span className="text-sm ">
             {theme === "dark" ? "Dark" : "Light"}
           </span>
         </div>

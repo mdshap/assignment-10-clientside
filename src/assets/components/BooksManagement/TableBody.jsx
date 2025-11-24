@@ -23,7 +23,7 @@ const TableBody = ({ book, count }) => {
         <td>
           <div className="flex items-center gap-3  w-50 lg:w-120">
             <div className="avatar border-2">
-              <div className="h-30 w-20 md:h-45 md:w-30">
+              <div className="h-25 w-15 md:h-45 md:w-30">
                 <img
                   src={book.coverImage}
                   alt="book image"
@@ -31,7 +31,7 @@ const TableBody = ({ book, count }) => {
               </div>
             </div>
             <div className="">
-              <div className="font-bold text-md md:text-xl ">{book.title}</div>
+              <div className="font-bold text-sm md:text-xl ">{book.title}</div>
               <div className="text-sm opacity-50">{book.author}</div>
             </div>
           </div>
@@ -48,10 +48,10 @@ const TableBody = ({ book, count }) => {
           <div className="flex flex-col  justify-center gap-3">
             <Link
               to={`/book-details/${book?._id}`}
-              className="btn text-md p-4 bg-secondary text-white ">
+              className="btn text-[11px] h-8 sm:text-md p-1.5 sm:p-4 bg-secondary text-white ">
               Details
             </Link>
-            <button className="btn text-md p-4 bg-transparent"><a 
+            <button className="btn text-[11px] h-8 sm:text-md p-1.5 bg-transparent"><a 
             target="_blank"
             href="https://vidyaprabodhinicollege.edu.in/VPCCECM/ebooks/ENGLISH%20LITERATURE/Harry%20potter/(Book%207)%20Harry%20Potter%20And%20The%20Deathly%20Hallows.pdf">Read</a></button>
           </div>

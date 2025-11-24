@@ -3,56 +3,73 @@ import React, { use, useEffect, useState } from "react";
 import TableBody from "./TableBody";
 import Loader from "../Loader/Loader";
 import { AuthContext } from "../Contexts/AuthContext";
+import { FaSortNumericDown, FaSortNumericDownAlt } from "react-icons/fa";
 
 const AllBooks = () => {
+  const [books, setBooks] = useState([]);
+  const [ascending, setAscending] = useState(false);
 
-  const [books, setBooks] = useState([])
-
-  const [booksLoading, setLoading] = useState(true)
-  const {loading} = use(AuthContext)
+  const [booksLoading, setLoading] = useState(true);
+  const { loading } = use(AuthContext);
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/books')
+      .get("http://localhost:3000/books")
       .then((res) => {
-        setBooks(res.data);
-        setLoading(false)
+        const sortedBooks = [...res.data];
+
+        if (ascending) {
+          sortedBooks.sort((a, b) => a.rating - b.rating);
+        } else {
+          sortedBooks.sort((a, b) => b.rating - a.rating);
+        }
+
+        setBooks(sortedBooks);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [ascending]);
 
-  if(booksLoading || loading){
-    return(
-      <Loader></Loader>
-    )
+  if (booksLoading || loading) {
+    return <Loader></Loader>;
   }
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table">
-          <thead className="">
-            <tr>
+        <table className="table h-[94vh]">
+          <thead >
+            <tr className="bg-green-200 text-black">
               <th className="hidden lg:block">
+                <label>S.l No.</label>
+              </th>
+
+              <th className="">
+                <label>Book Name & Author</label>
+              </th>
+
+              <th className="">
                 <label>
-                  S.l No.
+                  <p className="flex gap-2 items-center">Rating {
+                    ascending ? (<FaSortNumericDown className=" text-xl p-0.5 font-normal cursor-pointer border rounded-md" onClick={()=>setAscending(!ascending)} />) : (<FaSortNumericDownAlt className=" text-xl p-[2px] font-normal cursor-pointer border rounded-md" onClick={()=>setAscending(!ascending)} />) }</p>
+                  
                 </label>
               </th>
-              <th> Book Name & Author</th>
-              <th>Rating</th>
+
               <th className="hidden sm:block">Genre</th>
               <th>Action</th>
             </tr>
           </thead>
 
-          {
-            books.map((book, index)=>{
-              return(
-            <TableBody key={book._id} book={book} count={index+1}></TableBody>)
-          })
-              
-          }
+          {books.map((book, index) => {
+            return (
+              <TableBody
+                key={book._id}
+                book={book}
+                count={index + 1}></TableBody>
+            );
+          })}
         </table>
       </div>
     </div>

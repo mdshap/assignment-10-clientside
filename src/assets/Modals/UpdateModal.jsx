@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { AuthContext } from "../components/Contexts/AuthContext";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const UpdateModal = ({ book, updateModalOpen, setUpdateModalOpen }) => {
   const handleSubmit = (e) => {
@@ -22,6 +23,7 @@ const UpdateModal = ({ book, updateModalOpen, setUpdateModalOpen }) => {
       .patch(`http://localhost:3000/my-books/${book._id}`, updatedBookInfo)
       .then((res) => {
         setUpdateModalOpen(false);
+        toast.success('Successfully Updated')
         console.log(res.data)
     });
   };
