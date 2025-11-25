@@ -17,22 +17,10 @@ const Register = () => {
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
-      .then((result) => {
-        const newUser = {
-          name: result.user?.displayName,
-          email: result.user?.email,
-          image: result.user?.photoURL,
-        };
-        fetch("https://assignment-10-serverside-gyny.onrender.com/users", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(newUser),
-        })
-          .then((res) => res.json())
-          .catch(() => setRegisterLoading(false));
-      })
+    .then((res) => res.json())
+          .catch(() => setRegisterLoading(false))
       .catch(() => setRegisterLoading(false));
-  };
+  }
 
   const handleEmailRegister = (e) => {
     e.preventDefault();

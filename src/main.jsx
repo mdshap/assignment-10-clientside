@@ -54,18 +54,13 @@ const router = createBrowserRouter([
         </PrivateRoute>
       },
       {
-        path: "/update-book/:id",
-      },
-      {
-        path: "/delete-book/:id",
-      },
-    ],
-  },
-  {
     path: '*',
     Component: NotFound
 
-  }
+  },
+    ],
+  },
+  
 ]);
 
 createRoot(document.getElementById("root")).render(

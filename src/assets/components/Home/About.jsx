@@ -5,7 +5,7 @@ const About = () => {
     <div
       className="relative mx-auto w-full max-w-[1600px] mt-16"
       style={{
-        backgroundImage: "url('/public/about.png')",
+        backgroundImage: "url('about.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}>

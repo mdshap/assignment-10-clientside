@@ -43,7 +43,7 @@ const Navbar = () => {
   };
 
   const links = (
-    <div className="lg:flex gap-3 text-center">
+    <div className="lg:flex gap-3  text-center">
       <li>
         <NavLink to="/" data-tooltip-id="my-tooltip" data-tooltip-content="Home Page" >Home</NavLink>
       </li>
@@ -80,31 +80,34 @@ const Navbar = () => {
         </>
       )}
       <>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 mt-1 lg:mt-0">
+          <span className="text-[18.5px] lg:text-[13px] ml-4 ">
+            {theme === "dark" ? "Dark" : "Light"}
+          </span>
           <input
           data-tooltip-id="my-tooltip" data-tooltip-content="Switch between Dark & Light mode"
             type="checkbox"
-            className="toggle toggle-primary"
+            className="toggle lg:ml-0 ml-28 toggle-primary"
             checked={theme === "dark"}
             onChange={toggleTheme}
           />
-          <span className="text-sm ">
-            {theme === "dark" ? "Dark" : "Light"}
-          </span>
+          
         </div>
       </>
     </div>
   );
 
+
+
   return (
     <div className="">
       <div className="navbar bg-base-100 max-w-[1600px] mx-auto shadow-sm">
-        <div className="navbar-start ">
+        <div className="navbar-start px-2 sm:px-6 ">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost px-0 lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-5 w-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -118,19 +121,19 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+              className="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-60 h-55 p-2 shadow">
               {links}
             </ul>
           </div>
           <a
-            className="btn btn-ghost text-xl font-bold hover:bg-transparent hover:border-0 flex items-center"
+            className="btn btn-ghost text-lg sm:text-xl font-bold hover:bg-transparent hover:border-0 flex items-center"
             href="/">
               <FaBookOpen></FaBookOpen>
             Books<span className="text-secondary">Haven</span>
           </a>
         </div>
 
-        <div className="navbar-center  hidden lg:flex">
+        <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         
@@ -153,13 +156,13 @@ const Navbar = () => {
           ) : (
             <div className="flex gap-2">
               <Link
-                className="btn px-3 md:px-4 text-[11px] md:text-[14px] btn-secondary"
+                className="btn px-1.5 h-7 sm:h-10 sm:px-4 text-[9px] md:text-[14px] btn-secondary"
                 to="/login">
                 Login <FaUser />
               </Link>
               <Link
                 to="/register"
-                className="btn text-[11px] px-3 py-2 md:px-4 md:text-[14px] border-secondary text-secondary">
+                className="btn text-[9px] px-1.5 h-7 sm:h-10 py-2 sm:px-4 md:text-[14px] border-secondary text-secondary">
                 Register <MdOutlineAssignment />
               </Link>
             </div>

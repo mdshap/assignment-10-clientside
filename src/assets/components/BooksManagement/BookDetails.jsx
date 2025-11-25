@@ -15,14 +15,14 @@ const BookDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`https://assignment-10-serverside-gyny.onrender.com/${id}`)
+      .get(`https://assignment-10-serverside-gyny.onrender.com/books/${id}`)
       .then((res) => setBook(res.data))
       .catch((err) => console.log(err));
   }, [id]);
 
   useEffect(() => {
     axios
-      .get(`https://assignment-10-serverside-gyny.onrender.com/books/${id}/comments`)
+      .get(`https://assignment-10-serverside-gyny.onrender.com/${id}/comments`)
       .then((res) => setComments(res.data || []))
       .catch((err) => console.log(err));
   }, [id]);

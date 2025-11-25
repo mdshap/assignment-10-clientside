@@ -1,16 +1,14 @@
 import React from "react";
 import errorLogo from "/error-404.png";
 import { Link } from "react-router";
-import Navbar from "../layout/NavBar/NavBar";
 
 const NotFound = () => {
   return (
     <div>
-      <Navbar></Navbar>
       <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12">
         <div className="text-center px-4">
           <img
-            src={errorLogo}
+            src={errorLogo} 
             alt="appERROR"
             className="w-80 h-50 object-contain  mb-4"
           />

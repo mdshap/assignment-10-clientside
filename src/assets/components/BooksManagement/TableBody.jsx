@@ -16,12 +16,12 @@ const TableBody = ({ book, count }) => {
     }
   return (
     <tbody>
-      {/* row 1 */}
+
       <tr className="">
         <td className="hidden lg:block">{count}</td>
 
         <td>
-          <div className="flex items-center gap-3  w-50 lg:w-120">
+          <div className="flex items-center gap-3  w-42 lg:w-120">
             <div className="avatar border-2">
               <div className="h-25 w-15 md:h-45 md:w-30">
                 <img

@@ -36,7 +36,7 @@ const AllBooks = () => {
     return <Loader></Loader>;
   }
   return (
-    <div className="mt-10">
+    <div className="md:mt-10">
       <div className="overflow-x-auto">
         <table className="table h-[94vh]">
           <thead >

@@ -5,7 +5,6 @@ const BookCard = ({ book }) => {
   const r = Math.max(0, Math.min(5, Math.round(book?.rating)));
 
 
-  const addBook = () => {};
 
   return (
     <article className="w-full max-w-[350px] bg-white  rounded-xl shadow-md overflow-hidden transform transition hover:-translate-y-1 hover:shadow-xl">
@@ -44,7 +43,6 @@ const BookCard = ({ book }) => {
           <Link to={`/book-details/${book?._id}`} className="flex-1 inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium bg-secondary text-white hover:bg-indigo-700 transition"  >Details</Link>
 
           <button
-            onClick={addBook}
             className="flex-1 inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium border border-secondary text-secondary hover:bg-indigo-50 dark:hover:bg-indigo-900/40 transition">
             <a 
             target="_blank"
