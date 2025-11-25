@@ -100,7 +100,7 @@ const UpdateModal = ({ book, updateModalOpen, setUpdateModalOpen }) => {
 
                 <div className="flex flex-col">
                   <label className="text-sm mb-1">Your Email</label>
-                  <input name="userEmail" defaultValue={book?.userEmail} type="email" required disabled className="input input-bordered w-full bg-gray-100" />
+                  <input name="userEmail" defaultValue={book?.userEmail} type="email" required disabled className="input input-bordered w-full bg-transparent" />
                 </div>
 
                 <div className="md:col-span-2 flex gap-3 mt-2">

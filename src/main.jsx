@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createHashRouter, RouterProvider } from "react-router";
 import Root from "./assets/components/layout/Root/Root";
 import Home from "./assets/components/Home/Home";
 import AddBook from "./assets/components/BooksManagement/AddBook";
@@ -14,7 +14,7 @@ import AllBooks from "./assets/components/BooksManagement/AllBooks";
 import PrivateRoute from "./assets/components/PrivateRoute/PrivateRoute";
 import NotFound from "./assets/components/Pages/NotFound";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     Component: Root,

@@ -101,13 +101,13 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <div className="navbar bg-base-100 max-w-[1600px] mx-auto shadow-sm">
+      <div className="navbar min-h-20 sm:min-h-0 bg-base-100 max-w-[1600px] mx-auto shadow-sm">
         <div className="navbar-start px-2 sm:px-6 ">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost px-0 lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost px-2 lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-4"
+                className="h-5 w-4.5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -156,13 +156,13 @@ const Navbar = () => {
           ) : (
             <div className="flex gap-2">
               <Link
-                className="btn px-1.5 h-7 sm:h-10 sm:px-4 text-[9px] md:text-[14px] btn-secondary"
+                className="btn px-2 h-8 sm:h-10 sm:px-4 text-[10px] md:text-[14px] btn-secondary"
                 to="/login">
                 Login <FaUser />
               </Link>
               <Link
                 to="/register"
-                className="btn text-[9px] px-1.5 h-7 sm:h-10 py-2 sm:px-4 md:text-[14px] border-secondary text-secondary">
+                className="btn text-[10px] px-2 h-8 sm:h-10 py-2 sm:px-4 md:text-[14px] border-secondary text-secondary">
                 Register <MdOutlineAssignment />
               </Link>
             </div>

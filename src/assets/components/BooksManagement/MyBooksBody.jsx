@@ -43,7 +43,7 @@ const MyBooksBody = ({ book,setMyBooks, count, handleDelete }) => {
         <td className="hidden lg:block">{count}</td>
 
         <td>
-          <div className="flex items-center gap-3  w-50 lg:w-120">
+          <div className="flex items-center gap-3  w-42 lg:w-120">
             <div className="avatar border-2">
               <div className="h-30 w-20 md:h-45 md:w-30">
                 <img src={book.coverImage} alt="book image" />

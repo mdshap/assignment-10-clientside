@@ -60,7 +60,7 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-transparent shadow-lg border-3 rounded-xl p-8 my-10">
+    <div className="w-full max-w-3xl mx-auto bg-transparent shadow-lg md:border-3 rounded-xl p-8 my-10">
       <h2 className="text-3xl font-bold text-center mb-6">
         Add a <span className="text-secondary">New Book</span>
       </h2>

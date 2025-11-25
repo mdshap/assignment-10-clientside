@@ -60,9 +60,9 @@ const BookDetails = () => {
 
 
   return (
-    <div className="min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
-        <div className="bg-gray-950 rounded-2xl shadow-xl overflow-hidden">
+    <div className="min-h-screen md:py-12">
+      <div className="max-w-7xl mx-auto px-0 md:px-6 lg:px-8">
+        <div className="bg-gray-950 md:rounded-2xl shadow-xl overflow-hidden">
           <div className="grid grid-cols-1 place-content-center md:grid-cols-3 gap-6 p-6 md:p-8">
             <div className="md:col-span-1 flex items-start">
               <div className="w-full">
