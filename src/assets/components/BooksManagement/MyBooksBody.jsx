@@ -13,7 +13,7 @@ const MyBooksBody = ({ book,setMyBooks, count, handleDelete }) => {
           <p className="py-4 text-lg">Are you sure that you want to delete?</p>
           <div className="modal-action">
             <div method="dialog flex gap-6">
-              {/* if there is a button in form, it will close the modal */}
+
               <button
                 onClick={() => {
                   handleDelete(book._id);
@@ -38,7 +38,7 @@ const MyBooksBody = ({ book,setMyBooks, count, handleDelete }) => {
       </div>
 
 
-      {/* row 1 */}
+
       <tr className="">
         <td className="hidden lg:block">{count}</td>
 

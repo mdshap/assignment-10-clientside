@@ -52,7 +52,7 @@ const AllBooks = () => {
               <th className="">
                 <label>
                   <p className="flex gap-2 items-center">Rating {
-                    ascending ? (<FaSortNumericDown className=" text-xl p-0.5 font-normal cursor-pointer border rounded-md" onClick={()=>setAscending(!ascending)} />) : (<FaSortNumericDownAlt className=" text-xl p-[2px] font-normal cursor-pointer border rounded-md" onClick={()=>setAscending(!ascending)} />) }</p>
+                    ascending ? (<FaSortNumericDown className=" text-xl p-0.5 font-normal cursor-pointer border rounded-md" onClick={()=>setAscending(!ascending)} />) : (<FaSortNumericDownAlt className=" text-xl p-0.5 font-normal cursor-pointer border rounded-md" onClick={()=>setAscending(!ascending)} />) }</p>
                   
                 </label>
               </th>

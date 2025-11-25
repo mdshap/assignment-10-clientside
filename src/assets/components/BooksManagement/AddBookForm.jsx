@@ -65,7 +65,6 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
           />
         </div>
 
-        {/* Author */}
         <div className="flex flex-col">
           <label className="text-sm font-medium text-primary mb-1">
             Author
@@ -80,7 +79,6 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
           />
         </div>
 
-        {/* Genre */}
         <div className="flex flex-col">
           <label className="text-sm font-medium text-primary mb-1">Genre</label>
           <input
@@ -92,7 +90,6 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
           />
         </div>
 
-        {/* Rating */}
         <div className="flex flex-col">
           <label className="text-sm font-medium text-primary mb-1">
             Rating (out of 5)
@@ -109,7 +106,6 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
           />
         </div>
 
-        {/* Cover Image URL */}
         <div className="md:col-span-2 flex flex-col">
           <label className="text-sm font-medium text-primary mb-1">
             Cover Image
@@ -122,7 +118,6 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
           />
         </div>
 
-        {/* Summary */}
         <div className="md:col-span-2 flex flex-col">
           <label className="text-sm font-medium text-primary mb-1">
             Summary
@@ -163,7 +158,6 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
           />
         </div>
 
-        {/* Submit Button */}
         <div className="md:col-span-2 flex justify-center mt-4">
           <button
             type="submit"

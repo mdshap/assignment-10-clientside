@@ -21,18 +21,18 @@ const Login = () => {
 const toastShownRef = useRef(false);
 const justLoggedInRef = useRef(false);
 const navigate = useNavigate()
-// inside handleLogin, before calling signInUser:
+
 const handleLogin = (e) => {
   e.preventDefault();
   const email = e.target.email.value;
   const password = e.target.password.value;
   setErrorLogin("");
-  justLoggedInRef.current = true; // mark that this login was initiated here
+  justLoggedInRef.current = true; 
 
   signInUser(email, password)
     .then((result) => {
       toast.success("Successfully Logged in!");
-      justLoggedInRef.current = true; // ensure flag remains true until effect runs
+      justLoggedInRef.current = true; 
       console.log("Logged In:", result.user);
     })
     .catch((err) => {
@@ -44,7 +44,7 @@ const handleLogin = (e) => {
     });
 };
 
-// replace your existing useEffect that watches `user` with this:
+
 useEffect(() => {
   if (!user) return;
 

@@ -9,19 +9,19 @@ const ReactToaster = () => {
   position="top-center"
   reverseOrder={false}
   toastOptions={{
-    // Global default styles
+    
     style: {
-      fontSize: "16px",          // text size
-      padding: "12px 18px",      // size
-      borderRadius: "10px",      // round corners
-      background: "#333",        // toaster bg
-      color: "#fff",             // font color
+      fontSize: "16px",        
+      padding: "12px 18px",    
+      borderRadius: "10px",      
+      background: "#333",        
+      color: "#fff",             
     },
 
-    // Customize success toast
+
     success: {
       style: {
-        background: "#22c55e",   // green
+        background: "#22c55e",   
         color: "white",
         fontWeight: "600",
         fontSize: "16px",
@@ -32,10 +32,9 @@ const ReactToaster = () => {
       },
     },
 
-    // Customize error toast
     error: {
       style: {
-        background: "#ef4444",   // red
+        background: "#ef4444",   
         color: "white",
         fontWeight: "600",
         fontSize: "16px",
