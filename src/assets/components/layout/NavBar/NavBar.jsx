@@ -45,10 +45,10 @@ const Navbar = () => {
   const links = (
     <div className="lg:flex gap-3 text-center">
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" data-tooltip-id="my-tooltip" data-tooltip-content="Home Page" >Home</NavLink>
       </li>
       <li>
-        <NavLink to="/all-books">All Books</NavLink>
+        <NavLink to="/all-books" data-tooltip-id="my-tooltip" data-tooltip-content="All available books in the website">All Books</NavLink>
       </li>
       {user ? (
         ""
@@ -59,10 +59,10 @@ const Navbar = () => {
           ) : (
             <>
             <li>
-              <NavLink to="/register">Register</NavLink>
+              <NavLink to="/register" data-tooltip-id="my-tooltip" data-tooltip-content="Connect with us!">Register</NavLink>
             </li>
             <li>
-              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/login"  data-tooltip-id="my-tooltip" data-tooltip-content="Connect with us!">Login</NavLink>
             </li>
             </>
           )}
@@ -137,6 +137,7 @@ const Navbar = () => {
             <div className="flex gap-2 justify-center items-center">
               <img
                 className="rounded-full object-cover w-10 h-10"
+                 data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName}
                 src={`${user.photoURL}`}
                 alt="user_img"
                 title={`User: ${user?.displayName}`}

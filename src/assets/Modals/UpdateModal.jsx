@@ -1,11 +1,13 @@
-import React, { use } from "react";
-import { AuthContext } from "../components/Contexts/AuthContext";
+import React from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 const UpdateModal = ({ book, updateModalOpen, setUpdateModalOpen }) => {
+
+    const navigate = useNavigate()
+
   const handleSubmit = (e) => {
-    
     e.preventDefault();
 
     const updatedBookInfo = {
@@ -22,163 +24,98 @@ const UpdateModal = ({ book, updateModalOpen, setUpdateModalOpen }) => {
     axios
       .patch(`http://localhost:3000/my-books/${book._id}`, updatedBookInfo)
       .then((res) => {
-        setUpdateModalOpen(false);
-        toast.success('Successfully Updated')
         console.log(res.data)
-    });
+        setUpdateModalOpen(false);
+        toast.success("Successfully Updated");
+        navigate(0)
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("Update failed");
+      });
   };
 
   return (
     <dialog open={updateModalOpen} className="modal">
-      <div className="modal-box">
-        <div className="w-full mx-auto bg-transparent shadow-lg border-3 rounded-xl p-8 my-10">
-          <h2 className="text-3xl font-bold text-center mb-6">
-            Update Your <span className="text-secondary"> Book</span>
-          </h2>
-
-          <form
-            onSubmit={handleSubmit}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Title */}
-            <div className="flex flex-col">
-              <label className="text-sm font-medium  text-primary mb-1">
-                Book Title
-              </label>
-              <input
-                defaultValue={book?.title}
-                type="text"
-                name="title"
-                required
-                placeholder="Enter book title"
-                className="input input-bordered w-full bg-transparent"
-              />
+      <div className="modal-box max-w-4xl">
+        <div className="w-full mx-auto bg-transparent rounded-xl p-4 md:p-6">
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="w-full md:w-1/3 flex items-start">
+              <div className="w-full rounded-lg overflow-hidden shadow">
+                <img
+                  src={book?.coverImage || "/mnt/data/A_high-resolution_digital_photograph_captures_the_.png"}
+                  alt={book?.title}
+                  className="w-full h-auto object-cover aspect-[2/3]"
+                />
+              </div>
             </div>
 
-            {/* Author */}
-            <div className="flex flex-col">
-              <label className="text-sm font-medium text-primary mb-1">
-                Author
-              </label>
-              <input
-                type="text"
-                name="author"
-                defaultValue={book?.author}
-                required
-                placeholder="Author name"
-                className="input input-bordered w-full bg-transparent"
-              />
-            </div>
+            <div className="w-full md:w-2/3">
+              <h2 className="text-2xl font-semibold mb-4">Update Book</h2>
 
-            {/* Genre */}
-            <div className="flex flex-col">
-              <label className="text-sm font-medium text-primary mb-1">
-                Genre
-              </label>
-              <input
-                defaultValue={book?.genre}
-                type="text"
-                name="genre"
-                required
-                placeholder="e.g. Mystery, Fantasy, Non-Fiction"
-                className="input input-bordered w-full bg-transparent"
-              />
-            </div>
+              <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex flex-col">
+                  <label className="text-sm mb-1">Book Title</label>
+                  <input name="title" defaultValue={book?.title} type="text" required className="input input-bordered w-full" />
+                </div>
 
-            {/* Rating */}
-            <div className="flex flex-col">
-              <label className="text-sm font-medium text-primary mb-1">
-                Rating (out of 5)
-              </label>
-              <input
-                defaultValue={book.rating}
-                type="number"
-                name="rating"
-                step="0.1"
-                min="0"
-                max="5"
-                required
-                placeholder="4.5"
-                className="input input-bordered w-full bg-transparent"
-              />
-            </div>
+                <div className="flex flex-col">
+                  <label className="text-sm mb-1">Author</label>
+                  <input name="author" defaultValue={book?.author} type="text" required className="input input-bordered w-full" />
+                </div>
 
-            {/* Cover Image URL */}
-            <div className="md:col-span-2 flex flex-col">
-              <label className="text-sm font-medium text-primary mb-1">
-                Cover Image URL
-              </label>
-              <input
-                defaultValue={book?.coverImage}
-                type="url"
-                name="coverImage"
-                required
-                placeholder="https://example.com/cover.jpg"
-                className="input input-bordered w-full bg-transparent"
-              />
-            </div>
+                <div className="flex flex-col">
+                  <label className="text-sm mb-1">Genre</label>
+                  <input name="genre" defaultValue={book?.genre} type="text" required className="input input-bordered w-full" />
+                </div>
 
-            {/* Summary */}
-            <div className="md:col-span-2 flex flex-col">
-              <label className="text-sm font-medium text-primary mb-1">
-                Summary
-              </label>
-              <textarea
-                defaultValue={book?.summary}
-                name="summary"
-                required
-                placeholder="Write a short description about the book..."
-                className="textarea textarea-bordered w-full h-32 bg-transparent"></textarea>
-            </div>
+                <div className="flex flex-col">
+                  <label className="text-sm mb-1">Rating (out of 5)</label>
+                  <input
+                    name="rating"
+                    defaultValue={book?.rating}
+                    type="number"
+                    step="0.1"
+                    min="0"
+                    max="5"
+                    required
+                    className="input input-bordered w-full"
+                  />
+                </div>
 
-            <div className="flex flex-col">
-              <label className="text-sm font-medium  text-primary mb-1">
-                Your Name
-              </label>
-              <input
-                type="text"
-                name="userName"
-                defaultValue={book?.userName}
-                required
-                placeholder="name@example.com"
-                className="input input-bordered w-full bg-transparent"
-              />
-            </div>
+                <div className="md:col-span-2 flex flex-col">
+                  <label className="text-sm mb-1">Cover Image URL</label>
+                  <input name="coverImage" defaultValue={book?.coverImage} type="url" required className="input input-bordered w-full" />
+                </div>
 
-            <div className="flex flex-col">
-              <label className="text-sm font-medium  text-primary mb-1">
-                Your Email
-              </label>
-              <input
-                disabled
-                defaultValue={book.userEmail}
-                type="email"
-                name="userEmail"
-                required
-                placeholder="name@example.com"
-                className="input input-bordered w-full bg-transparent"
-              />
-            </div>
+                <div className="md:col-span-2 flex flex-col">
+                  <label className="text-sm mb-1">Summary</label>
+                  <textarea name="summary" defaultValue={book?.summary} required className="textarea textarea-bordered w-full h-28"></textarea>
+                </div>
 
-            {/* Submit Button */}
-            <div className="md:col-span-2 flex flex-col justify-center gap-2 mt-4">
-              <button
-                type="submit"
-                className="btn bg-green-600 text-white px-8 py-6 text-lg w-full  hover:opacity-90 transition">
-                Update Book
-              </button>
+                <div className="flex flex-col">
+                  <label className="text-sm mb-1">Your Name</label>
+                  <input name="userName" defaultValue={book?.userName || ""} type="text" required className="input input-bordered w-full" />
+                </div>
 
-              <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button
-                  onClick={() => setUpdateModalOpen(false)}
-                  className="btn w-full text-red-600 border-red-500 bg-transparent border-2 py-6">
-                  Cancel
-                </button>
+                <div className="flex flex-col">
+                  <label className="text-sm mb-1">Your Email</label>
+                  <input name="userEmail" defaultValue={book?.userEmail} type="email" required disabled className="input input-bordered w-full bg-gray-100" />
+                </div>
+
+                <div className="md:col-span-2 flex gap-3 mt-2">
+                  <button type="submit" className="btn bg-green-600 text-white flex-1">
+                    Update Book
+                  </button>
+
+                  <button type="button" onClick={() => setUpdateModalOpen(false)} className="btn flex-1 border border-gray-300">
+                    Cancel
+                  </button>
+                </div>
               </form>
             </div>
-          </form>
+          </div>
         </div>
-        <div className="modal-action"></div>
       </div>
     </dialog>
   );

@@ -31,7 +31,7 @@ const MyBooks = () => {
 
     return (
             <div>
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto min-h-[70vh]">
                 <table className="table">
                   <thead className="">
                     <tr>
@@ -50,7 +50,7 @@ const MyBooks = () => {
                   {
                     myBooks.map((book, index)=>{
                       return(
-                    <MyBooksBody book={book} count={index+1} handleDelete={handleDelete}></MyBooksBody>)
+                    <MyBooksBody setMyBooks={setMyBooks} book={book} count={index+1} handleDelete={handleDelete}></MyBooksBody>)
                   })
                       
                   }

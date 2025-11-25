@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router";
 import UpdateModal from "../../Modals/UpdateModal";
 
-const MyBooksBody = ({ book, count, handleDelete }) => {
+const MyBooksBody = ({ book,setMyBooks, count, handleDelete }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [updateModalOpen, setUpdateModalOpen] = useState(false)
 
@@ -34,7 +34,7 @@ const MyBooksBody = ({ book, count, handleDelete }) => {
 
 
       <div>
-        <UpdateModal book={book} updateModalOpen={updateModalOpen} setUpdateModalOpen={setUpdateModalOpen}></UpdateModal>
+        <UpdateModal setMyBooks={setMyBooks} book={book} updateModalOpen={updateModalOpen} setUpdateModalOpen={setUpdateModalOpen}></UpdateModal>
       </div>
 
 

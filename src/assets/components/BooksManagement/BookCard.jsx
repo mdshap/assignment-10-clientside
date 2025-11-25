@@ -41,7 +41,7 @@ const BookCard = ({ book }) => {
 
         <div className="mt-4 flex gap-3">
 
-          <Link to={`/book-details/${book?._id}`} className="flex-1 inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium bg-secondary text-white hover:bg-indigo-700 transition">Details</Link>
+          <Link to={`/book-details/${book?._id}`} className="flex-1 inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium bg-secondary text-white hover:bg-indigo-700 transition"  >Details</Link>
 
           <button
             onClick={addBook}

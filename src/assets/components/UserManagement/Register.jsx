@@ -4,11 +4,10 @@ import { Link, Navigate, useNavigate } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
 import { FaEye, FaRegEyeSlash } from "react-icons/fa";
 import toast from "react-hot-toast";
-import { auth } from "../firebase/firebase.init";
 
 const Register = () => {
   const toastShownRef = useRef(false);
-  const { user, createUser, setRegisterLoading, signInWithGoogle, signOut } =
+  const { user, createUser, setRegisterLoading, signInWithGoogle, signOutUser, setLoading } =
     use(AuthContext);
   const [showPass, setShowPass] = useState(false);
   const [errorPass, setErrorPass] = useState("");
@@ -52,15 +51,20 @@ const Register = () => {
 
     setErrorPass("");
     createUser(name, email, password)
-    .then((result) => {
-      console.log("Created User", result?.user);
-      setRegisterSuccess(true)
-    })
-    .catch(error=>{
-      toast.error('An Error')
-      console.log(error)
-    });
-  };
+      .then(async (result) => {
+        console.log(result)
+        setRegisterSuccess(true);
+        try {
+          await signOutUser();
+        } catch (err) {
+          console.error("Sign out after register failed:", err);
+        }
+      })
+      .catch((error) => {
+        toast.error("Invalid Email or Email Already Exists");
+        console.log(error);
+      });
+    }
 
   useEffect(() => {
     if (user && !toastShownRef.current) {
@@ -68,14 +72,15 @@ const Register = () => {
     navigate("/", { replace: true });
   }}, [user, navigate]);
 
+
     useEffect(() => {
-    if (registerSuccess){ 
-      signOut(auth)
+    if (registerSuccess){
+      signOutUser() 
       toast.success('Successfully Created Account')
       navigate("/login", { replace: true })
+      
   };
-  }, [registerSuccess, navigate]);
-
+  }, [registerSuccess, navigate, signOutUser, setLoading]);
 
   return (
     <div
