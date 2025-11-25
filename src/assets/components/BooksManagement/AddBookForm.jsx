@@ -51,7 +51,7 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
     };
 
     try {
-      await axios.post("http://localhost:3000/books", bookInfo);
+      await axios.post("https://assignment-10-serverside-gyny.onrender.com/books", bookInfo);
       setBookAdded(true);
       setLoadingAddBook(false)
     } catch (err) {

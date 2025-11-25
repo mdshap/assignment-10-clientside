@@ -15,7 +15,7 @@ const PopularBooks = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/${showAll ? "books" : "popular-books"}`)
+      .get(`https://assignment-10-serverside-gyny.onrender.com/${showAll ? "books" : "popular-books"}`)
       .then((res) => {
         setBooks(res.data);
         setBooksLoading(false)

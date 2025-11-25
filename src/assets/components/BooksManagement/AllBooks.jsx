@@ -14,7 +14,7 @@ const AllBooks = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/books")
+      .get("https://assignment-10-serverside-gyny.onrender.com/books")
       .then((res) => {
         const sortedBooks = [...res.data];
 
@@ -52,7 +52,7 @@ const AllBooks = () => {
               <th className="">
                 <label>
                   <p className="flex gap-2 items-center">Rating {
-                    ascending ? (<FaSortNumericDown className=" text-xl p-0.5 font-normal cursor-pointer border rounded-md" onClick={()=>setAscending(!ascending)} />) : (<FaSortNumericDownAlt className=" text-xl p-0.5 font-normal cursor-pointer border rounded-md" onClick={()=>setAscending(!ascending)} />) }</p>
+                    ascending ? (<FaSortNumericDown className=" text-xl p-0.5 font-normal cursor-pointer border rounded-md" onClick={()=>setAscending(!ascending)} data-tooltip-id="my-tooltip" data-tooltip-content="Sort Descending"/>) : (<FaSortNumericDownAlt className=" text-xl p-0.5 font-normal cursor-pointer border rounded-md" onClick={()=>setAscending(!ascending)} data-tooltip-id="my-tooltip" data-tooltip-content="Sort Ascending" />) }</p>
                   
                 </label>
               </th>

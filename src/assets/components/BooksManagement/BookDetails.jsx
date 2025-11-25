@@ -15,14 +15,14 @@ const BookDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/books/${id}`)
+      .get(`https://assignment-10-serverside-gyny.onrender.com/${id}`)
       .then((res) => setBook(res.data))
       .catch((err) => console.log(err));
   }, [id]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/books/${id}/comments`)
+      .get(`https://assignment-10-serverside-gyny.onrender.com/books/${id}/comments`)
       .then((res) => setComments(res.data || []))
       .catch((err) => console.log(err));
   }, [id]);
@@ -45,9 +45,9 @@ const BookDetails = () => {
       photoURL: user?.photoURL,
     };
 
-    axios.post(`http://localhost:3000/books/${id}/comments`, comment)
+    axios.post(`https://assignment-10-serverside-gyny.onrender.com/books/${id}/comments`, comment)
   .then(() => {
-    return axios.get(`http://localhost:3000/books/${id}/comments`);
+    return axios.get(`https://assignment-10-serverside-gyny.onrender.com/books/${id}/comments`);
   })
   .then((res) => setComments(res.data))
       
