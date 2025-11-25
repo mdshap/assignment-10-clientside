@@ -72,16 +72,17 @@ const Navbar = () => {
       {user && (
         <>
           <li>
-            <NavLink to="/add-book">Add Book</NavLink>
+            <NavLink to="/add-book" data-tooltip-id="my-tooltip" data-tooltip-content="Add Y=your books in our library">Add Book</NavLink>
           </li>
           <li>
-            <NavLink to="/myBooks">My Books</NavLink>
+            <NavLink to="/myBooks" data-tooltip-id="my-tooltip" data-tooltip-content="Books that are added by you">My Books</NavLink>
           </li>
         </>
       )}
       <>
         <div className="flex items-center gap-3">
           <input
+          data-tooltip-id="my-tooltip" data-tooltip-content="Switch between Dark & Light mode"
             type="checkbox"
             className="toggle toggle-primary"
             checked={theme === "dark"}
@@ -132,6 +133,7 @@ const Navbar = () => {
         <div className="navbar-center  hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
+        
         <div className="navbar-end">
           {user ? (
             <div className="flex gap-2 justify-center items-center">

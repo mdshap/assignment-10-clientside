@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { use, useEffect, useRef } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../Contexts/AuthContext";
 
 const AddBookForm = ({ setBookAdded, resetForm }) => {
@@ -13,32 +13,50 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
     setBookAdded(false);
   }, [resetForm]);
 
-  const handleSubmit = (e) => {
+  const [imageURL, setImageUrl] = useState("");
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const image = e.target.coverImage.files[0];
-    const formData = new FormData();
-    formData.append("coverImage", image);
-    axios
-      .post(
-        "https://api.imgbb.com/1/upload?key=3de4075d171467fb67c68c77755853ba",
-        formData
-      )
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error.message));
+    const fileInput = e.target.coverImage;
+    const imageFile = fileInput.files && fileInput.files[0];
+
+    let imageUrl = imageURL;
+
+    if (!imageUrl && imageFile) {
+      const formData = new FormData();
+      formData.append("image", imageFile);
+      try {
+        const res = await axios.post(
+          "https://api.imgbb.com/1/upload?key=3de4075d171467fb67c68c77755853ba",
+          formData
+        );
+        imageUrl = res.data?.data?.url;
+      } catch (err) {
+        console.error("Image upload failed", err);
+        return;
+      }
+    }
+
     const bookInfo = {
       title: e.target.title.value,
       author: e.target.author.value,
       genre: e.target.genre.value,
       rating: parseFloat(e.target.rating.value),
       summary: e.target.summary.value,
-      coverImage: e.target.coverImage.value,
+      coverImage: imageUrl,
       userEmail: e.target.userEmail.value,
       userName: e.target.userName.value,
     };
 
-    axios.post("http://localhost:3000/books", bookInfo);
-    setBookAdded(true);
+    try {
+      await axios.post("http://localhost:3000/books", bookInfo);
+      setBookAdded(true);
+      setLoadingAddBook(false)
+    } catch (err) {
+      console.error("Saving book failed", err);
+    }
   };
 
   return (
@@ -51,7 +69,7 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
         ref={formRef}
         onSubmit={handleSubmit}
         className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Title */}
+
         <div className="flex flex-col">
           <label className="text-sm font-medium  text-primary mb-1">
             Book Title
@@ -159,11 +177,14 @@ const AddBookForm = ({ setBookAdded, resetForm }) => {
         </div>
 
         <div className="md:col-span-2 flex justify-center mt-4">
-          <button
-            type="submit"
-            className="btn bg-primary text-white px-8 py-8 text-lg w-full  hover:opacity-90 transition">
-            Add Book
-          </button>
+
+            <button
+
+              type="submit"
+              className="btn bg-primary text-white px-8 py-8 text-lg w-full  hover:opacity-90 transition">
+              Add Book
+            </button>
+
         </div>
       </form>
     </div>
