@@ -1,5 +1,5 @@
-# 🎓 Scholar Stream
-### A Modern Scholarship Management Platform
+# 🎓 Books Haven
+### A Book Reviewing Platform
 
 ![Books Haven](https://img.shields.io/badge/Scholar-Stream-green?style=for-the-badge)
 ![MERN](https://img.shields.io/badge/MERN-Stack-success?style=for-the-badge)
