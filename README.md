@@ -1,7 +1,7 @@
 # 🎓 Books Haven
 ### A Book Reviewing Platform
 
-![Books Haven](https://img.shields.io/badge/Scholar-Stream-green?style=for-the-badge)
+![BooksHaven](https://img.shields.io/badge/Books-Haven-green?style=for-the-badge)
 ![MERN](https://img.shields.io/badge/MERN-Stack-success?style=for-the-badge)
 ![Firebase](https://img.shields.io/badge/Firebase-Authentication-orange?style=for-the-badge)
 
