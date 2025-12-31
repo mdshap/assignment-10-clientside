@@ -1,17 +1,57 @@
-# React + Vite
+# 🎓 Scholar Stream
+### A Modern Scholarship Management Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Books Haven]https://img.shields.io/badge/Scholar-Stream-green?style=for-the-badge)
+![MERN](https://img.shields.io/badge/MERN-Stack-success?style=for-the-badge)
+![Firebase](https://img.shields.io/badge/Firebase-Authentication-orange?style=for-the-badge)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Links
+- 🌐 **Live Website:** [https://zingy-starship-a00546.netlify.app/](https://gleaming-peony-d597c8.netlify.app/#/)
+- 🖥️ **Backend API:** [https://assignment-11-sever.onrender.com/](https://assignment-10-serverside-gyny.onrender.com/)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📌 Project Overview
 
-## Expanding the ESLint configuration
+**Scholar Stream** is a full-stack scholarship management system that enables students to discover scholarships, apply online, complete secure payments, track application status, and submit reviews.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-"# assignment-10-clientside" 
+Admins and moderators can manage scholarships, applications, reviews, and analytics through a secure dashboard.
+
+---
+
+## ✨ Features
+- Users can find books
+- Users can put review of their read books
+
+---
+
+## 🧱 Tech Stack
+
+### 🌐 Frontend
+- React.js  
+- React Router  
+- Tailwind CSS  
+- DaisyUI  
+- Framer Motion  
+- React Hot Toast  
+
+### 🖥️ Backend
+- Node.js  
+- Express.js  
+- MongoDB  
+
+### 🔐 Authentication
+- Firebase Authentication  
+  - Email & Password  
+  - Google Sign-In  
+
+---
+
+## 🗂️ Database Collections
+- Books
+- Reviews  
+
+---
+
