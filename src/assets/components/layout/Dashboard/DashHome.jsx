@@ -29,20 +29,18 @@ const DashHome = () => {
   const [allBooks, setAllBooks] = useState([]);
   const [myBooks, setMyBooks] = useState([]);
 
-  /* ================= FETCH DATA ================= */
   useEffect(() => {
-    axios.get("http://localhost:3000/books").then((res) => {
+    axios.get("https://assignment-10-serverside-gyny.onrender.com/books").then((res) => {
       setAllBooks(res.data);
     });
 
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/my-books/${user.email}`)
+        .get(`https://assignment-10-serverside-gyny.onrender.com/my-books/${user.email}`)
         .then((res) => setMyBooks(res.data));
     }
   }, [user]);
 
-  /* ================= RATING BUCKET HELPER ================= */
   const createRatingBuckets = (books) => {
     const buckets = {
       "5 Star": 0,
@@ -67,7 +65,6 @@ const DashHome = () => {
     }));
   };
 
-  /* ================= GENRE PIE HELPER ================= */
   const createGenreData = (books) =>
     Object.values(
       books.reduce((acc, book) => {
@@ -80,7 +77,6 @@ const DashHome = () => {
       }, {})
     );
 
-  /* ================= DATA ================= */
   const allBooksBar = createRatingBuckets(allBooks);
   const myBooksBar = createRatingBuckets(myBooks);
 
@@ -93,7 +89,6 @@ const DashHome = () => {
 
   return (
     <div className="space-y-10">
-      {/* ================= STATS ================= */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div className="bg-white dark:bg-gray-900 p-5 rounded-xl shadow">
           <p className="text-sm text-gray-500">Total Books (Website)</p>
@@ -117,14 +112,12 @@ const DashHome = () => {
         </div>
       </div>
 
-      {/* ================= GLOBAL CHARTS ================= */}
       <section>
         <h3 className="text-lg font-semibold mb-4">
           Website Analytics
         </h3>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {/* GLOBAL BAR */}
           <div className="bg-white dark:bg-gray-900 p-4 rounded-xl shadow">
             <h4 className="font-medium mb-3">
               All Books Rating Distribution
@@ -141,7 +134,6 @@ const DashHome = () => {
             </div>
           </div>
 
-          {/* GLOBAL PIE */}
           <div className="bg-white dark:bg-gray-900 p-4 rounded-xl shadow">
             <h4 className="font-medium mb-3">
               All Books by Genre
@@ -167,15 +159,12 @@ const DashHome = () => {
           </div>
         </div>
       </section>
-
-      {/* ================= PERSONAL CHARTS ================= */}
       <section>
         <h3 className="text-lg font-semibold mb-4">
           Your Book Analytics
         </h3>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {/* PERSONAL BAR */}
           <div className="bg-white dark:bg-gray-900 p-4 rounded-xl shadow">
             <h4 className="font-medium mb-3">
               Your Books Rating Distribution
@@ -192,7 +181,6 @@ const DashHome = () => {
             </div>
           </div>
 
-          {/* PERSONAL PIE */}
           <div className="bg-white dark:bg-gray-900 p-4 rounded-xl shadow">
             <h4 className="font-medium mb-3">
               Your Books by Genre
@@ -219,7 +207,6 @@ const DashHome = () => {
         </div>
       </section>
 
-      {/* ================= RECENT MY BOOKS ================= */}
       <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4">
         <h4 className="font-semibold mb-3">
           Recently Added by You

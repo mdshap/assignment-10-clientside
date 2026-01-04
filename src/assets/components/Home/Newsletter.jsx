@@ -1,10 +1,10 @@
-// NewsletterTailwind.jsx
+
 import React, { useState } from "react";
 import { FaPaperPlane, FaCheck } from "react-icons/fa";
 
 export default function Newsletter({ initialEmail = "" }) {
   const [email, setEmail] = useState(initialEmail);
-  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 

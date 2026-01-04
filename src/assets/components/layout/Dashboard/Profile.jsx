@@ -15,7 +15,6 @@ const Profile = () => {
 
   const IMGBB_KEY = import.meta.env.VITE_IMGBB_KEY;
 
-  /* ================= IMAGE PREVIEW ================= */
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -23,7 +22,6 @@ const Profile = () => {
     setPreview(URL.createObjectURL(file));
   };
 
-  /* ================= SAVE PROFILE ================= */
   const handleSaveProfile = async () => {
     try {
       setSaving(true);
@@ -54,7 +52,6 @@ const Profile = () => {
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-3 sm:px-6">
       <div className="w-full max-w-3xl bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-5 sm:p-8">
-        {/* ================= HEADER ================= */}
         <div className="flex flex-col sm:flex-row items-center gap-6">
           <div className="relative">
             <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-xl overflow-hidden bg-gradient-to-br from-pink-500 to-pink-400 flex items-center justify-center text-white">
@@ -84,7 +81,6 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* ================= INFO CARDS ================= */}
         <div className="mt-8 grid sm:grid-cols-2 gap-4">
           <div className="p-4 rounded-lg bg-gray-100 dark:bg-gray-800">
             <div className="flex items-center gap-2 text-sm text-gray-500">
@@ -107,7 +103,6 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* ================= ACTION ================= */}
         <button
           onClick={() => setEditModal(true)}
           className="mt-6 w-full bg-secondary hover:bg-primary text-white py-2 rounded-lg transition"
@@ -116,7 +111,6 @@ const Profile = () => {
         </button>
       </div>
 
-      {/* ================= EDIT MODAL ================= */}
       {editModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div

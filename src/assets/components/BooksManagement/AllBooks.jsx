@@ -32,7 +32,7 @@ const AllBooks = () => {
 
   /* Fetch books */
   useEffect(() => {
-    axios.get("http://localhost:3000/books").then((res) => {
+    axios.get("https://assignment-10-serverside-gyny.onrender.com/books").then((res) => {
       setAllBooks(res.data);
       setBooksLoading(false);
     });
@@ -76,10 +76,8 @@ const AllBooks = () => {
   return (
     <div className="mt-5 md:mt-10 px-4 mb-20">
 
-      {/* TOP BAR */}
       <div className="flex justify-between  gap-4 items-stretch sm:items-center mb-6">
 
-        {/* SEARCH */}
         <input
           type="text"
           placeholder="Search book or author"
@@ -88,7 +86,6 @@ const AllBooks = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
 
-        {/* FILTER DROPDOWN */}
         <div className="flex gap-3"><div className="relative">
           <button
             onClick={() => setShowFilters(!showFilters)}
@@ -107,7 +104,7 @@ const AllBooks = () => {
             ">
               <div className="space-y-4">
 
-                {/* GENRE */}
+
                 <div>
                   <label className="text-sm font-medium">Genre</label>
                   <select
@@ -127,7 +124,6 @@ const AllBooks = () => {
                   </select>
                 </div>
 
-                {/* RATING */}
                 <div>
                   <label className="text-sm font-medium">
                     Minimum Rating
@@ -144,7 +140,6 @@ const AllBooks = () => {
                   />
                 </div>
 
-                {/* ACTIONS */}
                 <div className="flex justify-between pt-2">
                   <button
                     onClick={() => {
@@ -168,7 +163,6 @@ const AllBooks = () => {
           )}
         </div>
 
-        {/* SORT */}
         <button
           onClick={() => setAscending(!ascending)}
           className="btn btn-outline border-secondary text-secondary hover:bg-secondary hover:text-white"
@@ -186,7 +180,6 @@ const AllBooks = () => {
         
       </div>
 
-      {/* TABLE */}
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
@@ -209,7 +202,6 @@ const AllBooks = () => {
         </table>
       </div>
 
-      {/* PAGINATION */}
       <div className="flex justify-center items-center gap-6 mt-8">
         <button
           className="btn btn-outline"

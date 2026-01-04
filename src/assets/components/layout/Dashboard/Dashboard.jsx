@@ -8,7 +8,6 @@ import Loader from "../../Loader/Loader";
 const Dashboard = () => {
   const { loading } = use(AuthContext);
 
-  // 🔥 REQUIRED FIX: re-apply saved theme on dashboard load
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
     const html = document.documentElement;

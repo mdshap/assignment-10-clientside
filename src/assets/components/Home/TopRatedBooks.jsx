@@ -14,7 +14,7 @@ const TopRatedBooks = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/top-rated-books`)
+      .get(`https://assignment-10-serverside-gyny.onrender.com/top-rated-books`)
       .then((res) => {
         setBooks(res.data);
         setBooksLoading(false)

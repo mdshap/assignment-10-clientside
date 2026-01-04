@@ -20,13 +20,11 @@ const Footer = () => {
     >
       <div className="max-w-[1400px] px-4 md:px-6 lg:px-8 py-14 mx-auto">
 
-        {/* MAIN FLEX LAYOUT */}
         <div className="
           flex flex-col gap-12
           lg:flex-row lg:justify-between lg:items-start
         ">
 
-          {/* BRAND */}
           <div className="max-w-sm text-center lg:text-left not-lg:mx-auto">
             <div className="flex items-center justify-center lg:justify-start gap-3">
               <FaBookOpen className="text-3xl text-secondary" />
@@ -41,7 +39,6 @@ const Footer = () => {
               book lovers.
             </p>
 
-            {/* SOCIAL ICONS */}
             <div className="flex justify-center lg:justify-start gap-4 mt-6">
               {[
                 { icon: <FaFacebookF />, link: "#" },
@@ -71,13 +68,10 @@ const Footer = () => {
               ))}
             </div>
           </div>
-
-          {/* EXPLORE + LEGAL (GROUPED) */}
           <div className="
             grid grid-cols-2 gap-12
             text-center lg:text-left
           ">
-            {/* EXPLORE */}
             <div>
               <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                 Explore & Support
@@ -98,7 +92,6 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* LEGAL */}
             <div>
               <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                 Legal
@@ -120,7 +113,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* CREATOR */}
           <div className="flex flex-col items-center text-center md:text-left">
             <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
               Crafted By
@@ -163,7 +155,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* BOTTOM */}
         <div className="mt-14 pt-6 border-t border-pink-200 dark:border-gray-800 text-center">
           <p className="text-sm text-gray-700 dark:text-gray-400">
             © {new Date().getFullYear()} Books Haven · All Rights Reserved

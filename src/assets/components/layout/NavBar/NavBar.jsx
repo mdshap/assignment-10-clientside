@@ -39,14 +39,12 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-white dark:bg-gray-900 shadow-md px-4">
-      {/* LEFT */}
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             ☰
           </label>
 
-          {/* MOBILE DROPDOWN */}
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 p-3 shadow-lg bg-white dark:bg-gray-900 rounded-xl w-64 space-y-1"
@@ -75,7 +73,6 @@ const Navbar = () => {
               <FaInfoCircle /> About Us
             </NavLink>
 
-            {/* THEME TOGGLE */}
             <div className="flex items-center justify-between px-2 pt-2">
               <span className="text-sm text-gray-700 dark:text-gray-300">
                 {theme === "dark" ? "Dark" : "Light"}
@@ -90,7 +87,6 @@ const Navbar = () => {
           </ul>
         </div>
 
-        {/* LOGO */}
         <Link to="/" className="flex items-center gap-2 ml-2">
           <FaBookOpen className="text-secondary text-xl" />
           <span className="font-bold text-lg">
@@ -99,7 +95,6 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* CENTER (DESKTOP NAV) */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal gap-2">
           <NavLink to="/" className={navItemClass}>
@@ -124,9 +119,7 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* RIGHT */}
       <div className="navbar-end flex items-center gap-0 xs:gap-4">
-        {/* THEME TOGGLE (DESKTOP) */}
         <div className="hidden xs:flex items-center gap-2">
           <span className="text-sm text-gray-700 dark:text-gray-300">
             {theme === "dark" ? "Dark" : "Light"}
@@ -139,7 +132,7 @@ const Navbar = () => {
           />
         </div>
 
-        {/* USER DROPDOWN */}
+
         {user ? (
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="cursor-pointer">

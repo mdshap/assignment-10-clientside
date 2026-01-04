@@ -39,7 +39,6 @@ const reviews = [
   },
 ];
 
-// ⭐ Star Component
 const RatingStars = ({ rating }) => {
   return (
     <div className="flex gap-1">
@@ -62,20 +61,17 @@ const ReviewedBooks = () => {
         <div className="w-full bg-secondary h-0.5 -mt-0.5"></div>
       </h3>
 
-      {/* Reviews Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {reviews.map(({ id, user, bookName, genre, rating, review }) => (
           <div
             key={id}
             className="bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6 hover:shadow-lg transition"
           >
-            {/* User & Rating */}
             <div className="flex items-center justify-between mb-3">
               <p className="font-semibold text-secondary">{user}</p>
               <RatingStars rating={rating} />
             </div>
 
-            {/* Book Info */}
             <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
               {bookName}
             </h4>
@@ -83,7 +79,6 @@ const ReviewedBooks = () => {
               Genre: {genre}
             </p>
 
-            {/* Review */}
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
               “{review}”
             </p>

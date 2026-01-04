@@ -8,7 +8,6 @@ const DashSidebar = () => {
   const { signOutUser } = use(AuthContext);
   const [collapsed, setCollapsed] = useState(true);
 
-  // ✅ Auto collapse below md
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
     const handle = () => {
@@ -37,7 +36,6 @@ const DashSidebar = () => {
     <aside
       className={`sticky top-0 h-screen bg-white dark:bg-gray-900 border-r dark:border-gray-800 shadow-lg transition-all duration-200 ${sidebarWidth}`}
     >
-      {/* LOGO */}
       <div
         className={`flex items-center gap-3 border-b dark:border-gray-800 py-4 ${
           collapsed ? "justify-center" : "px-5"
@@ -53,10 +51,8 @@ const DashSidebar = () => {
         </Link>
       </div>
 
-      {/* NAV */}
       <nav className="mt-6 space-y-1">
 
-        {/* 🔥 GO TO MAIN WEBSITE */}
         <Link
           to="/"
           className={`flex items-center gap-3 py-2.5 transition
@@ -85,7 +81,6 @@ const DashSidebar = () => {
         </NavLink>
       </nav>
 
-      {/* LOGOUT */}
       <div className={`absolute bottom-4 w-full ${collapsed ? "px-2" : "px-4"}`}>
         <button
           onClick={() => {

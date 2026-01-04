@@ -13,7 +13,7 @@ const DashMyBooks = () => {
     if (!user?.email) return;
 
     axios
-      .get(`http://localhost:3000/my-books/${user.email}`)
+      .get(`https://assignment-10-serverside-gyny.onrender.com/my-books/${user.email}`)
       .then((res) => {
         setMyBooks(res.data);
         setDataLoading(false);
@@ -23,7 +23,7 @@ const DashMyBooks = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3000/my-books/${id}/${user.email}`)
+      .delete(`https://assignment-10-serverside-gyny.onrender.com/my-books/${id}/${user.email}`)
       .then(() => {
         setMyBooks((prev) => prev.filter((b) => b._id !== id));
       })
@@ -40,7 +40,6 @@ const DashMyBooks = () => {
         p-3 sm:p-4 md:p-6
       "
     >
-      {/* HEADER */}
       <div className="mb-4 sm:mb-5">
         <h2 className="text-xl sm:text-2xl font-bold text-secondary">
           My Books
@@ -50,7 +49,6 @@ const DashMyBooks = () => {
         </p>
       </div>
 
-      {/* EMPTY STATE */}
       {myBooks.length === 0 ? (
         <div className="text-center py-12 sm:py-20 text-gray-500">
           <p className="text-base sm:text-lg font-medium">
@@ -63,7 +61,6 @@ const DashMyBooks = () => {
       ) : (
         <div className="overflow-x-auto">
           <table className="table w-full">
-            {/* TABLE HEAD — hidden on mobile */}
             <thead className="hidden md:table-header-group">
               <tr className="bg-pink-100 dark:bg-gray-800">
                 <th className="hidden lg:table-cell">S.I</th>

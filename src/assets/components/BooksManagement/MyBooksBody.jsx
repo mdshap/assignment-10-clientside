@@ -7,7 +7,6 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
 
   return (
     <>
-      {/* DELETE MODAL */}
       <dialog open={deleteModalOpen} className="modal">
         <div className="modal-box max-w-sm">
           <p className="text-lg font-medium text-center">
@@ -34,7 +33,6 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
         </div>
       </dialog>
 
-      {/* UPDATE MODAL */}
       <UpdateModal
         book={book}
         setMyBooks={setMyBooks}
@@ -42,7 +40,6 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
         setUpdateModalOpen={setUpdateModalOpen}
       />
 
-      {/* DESKTOP ROW */}
       <tr className="hidden md:table-row align-middle">
         <td className="hidden lg:table-cell">{count}</td>
 
@@ -88,7 +85,6 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
         </td>
       </tr>
 
-      {/* MOBILE CARD */}
       <tr className="md:hidden">
         <td colSpan="5">
           <div
@@ -101,14 +97,12 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
             "
           >
             <div className="flex gap-3">
-              {/* IMAGE */}
               <img
                 src={book.coverImage}
                 alt={book.title}
                 className="w-16 h-24 object-cover rounded-md flex-shrink-0"
               />
 
-              {/* CONTENT */}
               <div className="flex-1 min-w-0">
                 <h3 className="font-semibold text-sm truncate">
                   {book.title}
@@ -118,7 +112,6 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
                   {book.author}
                 </p>
 
-                {/* META */}
                 <div className="flex flex-wrap items-center gap-1.5 mt-1 text-xs">
                   <span className="px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-700">
                     ⭐ {book.rating}
@@ -128,7 +121,6 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
                   </span>
                 </div>
 
-                {/* BUTTONS */}
                 <div className="grid grid-cols-2 gap-2 mt-3">
                   <button
                     onClick={() => setUpdateModalOpen(true)}

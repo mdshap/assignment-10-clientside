@@ -18,7 +18,6 @@ const DashAddBook = () => {
 
   return (
     <>
-      {/* SUCCESS MODAL */}
       <dialog open={modalOpen} className="modal">
         <div className="modal-box">
           <h3 className="font-semibold text-lg text-center">
@@ -51,7 +50,6 @@ const DashAddBook = () => {
         </div>
       </dialog>
 
-      {/* FORM — NO EXTRA CONTAINER */}
       <AddBookForm
         setBookAdded={setBookAdded}
         resetForm={resetForm}
