@@ -10,7 +10,7 @@ const MyBooks = () => {
 
 
     useEffect(()=>{
-        axios.get(`https://assignment-10-serverside-gyny.onrender.com/my-books/${user.email}`)
+        axios.get(`http://localhost:3000/my-books/${user.email}`)
         .then( res =>{
             setMyBooks(res.data)
             console.log(res.data)
@@ -19,7 +19,7 @@ const MyBooks = () => {
 
     const handleDelete = (id) => {
     axios
-      .delete(`https://assignment-10-serverside-gyny.onrender.com/my-books/${id}/${user.email}`)
+      .delete(`http://localhost:3000/my-books/${id}/${user.email}`)
       .then((res) => {
         console.log(res.data);
       })

@@ -74,7 +74,7 @@ const Banner = ({
               <Link
                 to="/add-book"
                 className="inline-block px-5 py-2 rounded-md  bg-primary text-white font-medium shadow-sm  transition hover:translate-y-[-2px] hover:bg-green-600">
-                Create Book
+                Add a Book
               </Link>
             </div>
           </div>

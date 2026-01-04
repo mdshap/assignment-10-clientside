@@ -22,7 +22,7 @@ const UpdateModal = ({ book, updateModalOpen, setUpdateModalOpen }) => {
     };
 
     axios
-      .patch(`https://assignment-10-serverside-gyny.onrender.com/my-books/${book._id}`, updatedBookInfo)
+      .patch(`http://localhost:3000/my-books/${book._id}`, updatedBookInfo)
       .then((res) => {
         console.log(res.data)
         setUpdateModalOpen(false);

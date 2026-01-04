@@ -4,6 +4,11 @@ import PopularBooks from './PopularBooks';
 import BookOfTheWeek from './BookOfTheWeek';
 import About from './About';
 import { AuthContext } from '../Contexts/AuthContext';
+import TopRatedBooks from './TopRatedBooks';
+import ContactUs from './ContactUs';
+import FAQ from './FAQ';
+import ReviewedBooks from './ReviewedBooks';
+import Newsletter from './Newsletter';
 
 
 const Home = () => {
@@ -14,15 +19,15 @@ const Home = () => {
         <div>
 
             
+            <Banner className=" my-5 sm:my-10 "></Banner>
             
-            <Banner className=" my-5 sm:my-10"></Banner>
-            <div className="`w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 bg-transparent my-20">
-      <h3 className="text-3xl md:text-4xl font-bold text-center mb-6">
-        Latest <span className="text-secondary ">Books</span>
-      </h3>
             <PopularBooks></PopularBooks>
-            </div>
+            <TopRatedBooks/>
             <BookOfTheWeek></BookOfTheWeek>
+            <ReviewedBooks></ReviewedBooks>
+            <FAQ></FAQ>
+            <ContactUs></ContactUs>
+            <Newsletter></Newsletter>
             <About></About>
         </div>
     );

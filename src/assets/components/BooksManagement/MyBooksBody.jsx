@@ -1,85 +1,175 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
 import UpdateModal from "../../Modals/UpdateModal";
 
-const MyBooksBody = ({ book,setMyBooks, count, handleDelete }) => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [updateModalOpen, setUpdateModalOpen] = useState(false)
+const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [updateModalOpen, setUpdateModalOpen] = useState(false);
 
   return (
-    <tbody>
-      <dialog open={modalOpen} className="modal">
-        <div className="modal-box max-w-88">
-          <p className="py-4 text-lg">Are you sure that you want to delete?</p>
-          <div className="modal-action">
-            <div method="dialog flex gap-6">
+    <>
+      {/* DELETE MODAL */}
+      <dialog open={deleteModalOpen} className="modal">
+        <div className="modal-box max-w-sm">
+          <p className="text-lg font-medium text-center">
+            Delete this book?
+          </p>
 
-              <button
-                onClick={() => {
-                  handleDelete(book._id);
-                  setModalOpen(false);
-                }}
-                className="btn mx-3 px-6 bg-red-600 text-white">
-                Yes
-              </button>
-              <button
-                onClick={() => setModalOpen(false)}
-                className="btn px-6 bg-green-600 text-white">
-                No
-              </button>
-            </div>
+          <div className="modal-action justify-center gap-4">
+            <button
+              onClick={() => {
+                handleDelete(book._id);
+                setDeleteModalOpen(false);
+              }}
+              className="btn bg-red-500 text-white px-6"
+            >
+              Yes
+            </button>
+            <button
+              onClick={() => setDeleteModalOpen(false)}
+              className="btn bg-gray-300 text-black px-6"
+            >
+              No
+            </button>
           </div>
         </div>
       </dialog>
 
+      {/* UPDATE MODAL */}
+      <UpdateModal
+        book={book}
+        setMyBooks={setMyBooks}
+        updateModalOpen={updateModalOpen}
+        setUpdateModalOpen={setUpdateModalOpen}
+      />
 
-      <div>
-        <UpdateModal setMyBooks={setMyBooks} book={book} updateModalOpen={updateModalOpen} setUpdateModalOpen={setUpdateModalOpen}></UpdateModal>
-      </div>
-
-
-
-      <tr className="">
-        <td className="hidden lg:block">{count}</td>
+      {/* DESKTOP ROW */}
+      <tr className="hidden md:table-row align-middle">
+        <td className="hidden lg:table-cell">{count}</td>
 
         <td>
-          <div className="flex items-center gap-3  w-42 lg:w-120">
-            <div className="avatar border-2">
-              <div className="h-30 w-20 md:h-45 md:w-30">
-                <img src={book.coverImage} alt="book image" />
-              </div>
-            </div>
-            <div className="">
-              <div className="font-bold text-md md:text-xl ">{book.title}</div>
-              <div className="text-sm opacity-50">{book.author}</div>
+          <div className="flex items-center gap-3 max-w-[420px]">
+            <img
+              src={book.coverImage}
+              alt={book.title}
+              className="w-14 h-20 object-cover rounded-md"
+            />
+            <div className="min-w-0">
+              <p className="font-semibold truncate">{book.title}</p>
+              <p className="text-sm text-gray-500 truncate">
+                {book.author}
+              </p>
             </div>
           </div>
         </td>
 
-        <td className="text-yellow-600 font-bold text-md md:text-lg">
+        <td className="text-center text-yellow-500 font-bold">
           {book.rating}
         </td>
-        <td className=" hidden sm:inline text-md  md:text-lg">
-          <p className="my-14">{book.genre}</p>
+
+        <td className="hidden sm:table-cell capitalize">
+          {book.genre}
         </td>
 
         <td>
-          <div className="flex flex-col mt-2 gap-5 justify-between">
-            <Link
-            onClick={()=>setUpdateModalOpen(true)}
-              className="flex-1 inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium bg-green-600 text-white hover:bg-indigo-700 transition">
+          <div className="flex flex-col gap-2 w-max">
+            <button
+              onClick={() => setUpdateModalOpen(true)}
+              className="btn btn-xs bg-green-500 text-white"
+            >
               Update
-            </Link>
-
-            <Link
-              onClick={() => setModalOpen(true)}
-              className="flex-1 inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium bg-red-500 text-white hover:bg-indigo-700 transition">
+            </button>
+            <button
+              onClick={() => setDeleteModalOpen(true)}
+              className="btn btn-xs bg-red-500 text-white"
+            >
               Delete
-            </Link>
+            </button>
           </div>
         </td>
       </tr>
-    </tbody>
+
+      {/* MOBILE CARD */}
+      <tr className="md:hidden">
+        <td colSpan="5">
+          <div
+            className="
+              bg-white dark:bg-gray-900
+              rounded-lg
+              border border-pink-100 dark:border-gray-800
+              p-3
+              mb-3
+            "
+          >
+            <div className="flex gap-3">
+              {/* IMAGE */}
+              <img
+                src={book.coverImage}
+                alt={book.title}
+                className="w-16 h-24 object-cover rounded-md flex-shrink-0"
+              />
+
+              {/* CONTENT */}
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold text-sm truncate">
+                  {book.title}
+                </h3>
+
+                <p className="text-xs text-gray-500 truncate">
+                  {book.author}
+                </p>
+
+                {/* META */}
+                <div className="flex flex-wrap items-center gap-1.5 mt-1 text-xs">
+                  <span className="px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-700">
+                    ⭐ {book.rating}
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 capitalize">
+                    {book.genre}
+                  </span>
+                </div>
+
+                {/* BUTTONS */}
+                <div className="grid grid-cols-2 gap-2 mt-3">
+                  <button
+                    onClick={() => setUpdateModalOpen(true)}
+                    className="
+                      h-8
+                      rounded-md
+                      bg-green-500
+                      text-white
+                      text-xs
+                      font-medium
+                      flex
+                      items-center
+                      justify-center
+                    "
+                  >
+                    Update
+                  </button>
+
+                  <button
+                    onClick={() => setDeleteModalOpen(true)}
+                    className="
+                      h-8
+                      rounded-md
+                      bg-red-500
+                      text-white
+                      text-xs
+                      font-medium
+                      flex
+                      items-center
+                      justify-center
+                    "
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </>
   );
 };
 

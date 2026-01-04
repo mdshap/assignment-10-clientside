@@ -3,13 +3,14 @@ import { Link } from "react-router";
 
 const BookOfTheWeek = () => {
   return (
-    <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 my-16">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-        Book of the <span className="text-secondary">Week</span>
-      </h2>
+    <div className="w-full max-w-[1400px] mx-auto my-16 px-6 2xl:px-0">
+      <h3 className="text-2xl font-semibold  text-white  mb-6">
+        <span className="text-white bg-secondary pt-2 pb-1 px-4 inline-block  clip-trapezium">Book of The Week</span>
+        <div className='w-full bg-secondary h-0.5 -mt-0.5'></div>
+      </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-950  rounded-2xl shadow-md p-6 md:p-10">
-        <div className="flex items-center justify-center">
+      <div className="flex not-sm:flex-col gap-8 bg-white dark:bg-gray-900  rounded-2xl shadow-md p-6 md:p-10">
+        <div className="flex items-center justify-center min-w-70 lg:min-w-100">
           <img
             src="https://www.pluggedin.com/wp-content/uploads/2020/01/harry-potter-and-the-deathly-hallows-cover-image-692x1024.jpeg"
             alt="Book Cover"
@@ -17,8 +18,8 @@ const BookOfTheWeek = () => {
           />
         </div>
 
-        <div className="flex flex-col justify-center">
-          <h3 className="text-2xl md:text-4xl font-semibold text-secondary">
+        <div className="flex flex-col justify-center max-w-180">
+          <h3 className="text-2xl md:text-4xl font-semibold text-secondary not-sm:text-center">
             Harry Potter and The Deathly Hallows
           </h3>
 
@@ -34,8 +35,8 @@ const BookOfTheWeek = () => {
             storytelling.
           </p>
 
-          <div className="mt-6 flex gap-3">
-            <button className="btn border-0 px-5 py-2 rounded-md bg-secondary text-white font-medium hover:opacity-90 transition">
+          <div className="mt-6 flex gap-3 not-sm:mx-auto">
+            <button className="btn border-0 px-5 py-2 rounded-md bg-secondary hover:bg-primary text-white font-medium hover:opacity-90 transition">
               <a
                 target="_blank"
                 href="https://vidyaprabodhinicollege.edu.in/VPCCECM/ebooks/ENGLISH%20LITERATURE/Harry%20potter/(Book%207)%20Harry%20Potter%20And%20The%20Deathly%20Hallows.pdf">
@@ -43,7 +44,7 @@ const BookOfTheWeek = () => {
               </a>
             </button>
 
-            <button className="px-5 py-2 rounded-md border border-secondary text-secondary font-medium hover:bg-secondary hover:text-white transition">
+            <button className="px-5 py-2 rounded-md border border-secondary text-secondary font-medium hover:text-primary hover:border-primary transition">
               <Link to="/book-details/6921de5351571c1b3655955f">Details</Link>
             </button>
           </div>

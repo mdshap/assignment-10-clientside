@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { AuthContext } from "./AuthContext";
 
+
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
@@ -38,6 +39,16 @@ const AuthProvider = ({ children }) => {
     });
 };
 
+const updateUserProfile = async (name, photoURL) => {
+  if (!auth.currentUser) {
+    throw new Error("No authenticated user");
+  }
+
+  await updateProfile(auth.currentUser, {
+    displayName: name,
+    photoURL: photoURL,
+  });
+};
 
   const signInUser = (email, password) => {
     setLoading(true);
@@ -75,6 +86,7 @@ const AuthProvider = ({ children }) => {
     setLoading,
     registerLoading,
     setRegisterLoading,
+    updateUserProfile
   };
 
   return <AuthContext value={authInfo}>{children}</AuthContext>;

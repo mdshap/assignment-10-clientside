@@ -1,10 +1,29 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@custom-variant xs (@media (min-width: 450px) and (max-width: 639px));
+
+
+
 .active{
   @apply bg-primary text-white px-5
 }
 
+
+.clip-trapezium {
+  clip-path: polygon(
+    0% 0%,   /* top-left inward */
+    92% 0%,  /* top-right inward */
+    100% 100%, /* bottom-right */
+    0% 100%   /* bottom-left */
+  );
+  padding-right: 40px;
+}
+
+
+ 
 @keyframes slideInLeft {
   0% {
     opacity: 0;

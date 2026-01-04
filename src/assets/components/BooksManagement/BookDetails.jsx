@@ -15,14 +15,14 @@ const BookDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`https://assignment-10-serverside-gyny.onrender.com/books/${id}`)
+      .get(`http://localhost:3000/books/${id}`)
       .then((res) => setBook(res.data))
       .catch((err) => console.log(err));
   }, [id]);
 
   useEffect(() => {
     axios
-      .get(`https://assignment-10-serverside-gyny.onrender.com/${id}/comments`)
+      .get(`http://localhost:3000/${id}/comments`)
       .then((res) => setComments(res.data || []))
       .catch((err) => console.log(err));
   }, [id]);
@@ -45,9 +45,9 @@ const BookDetails = () => {
       photoURL: user?.photoURL,
     };
 
-    axios.post(`https://assignment-10-serverside-gyny.onrender.com/books/${id}/comments`, comment)
+    axios.post(`http://localhost:3000/books/${id}/comments`, comment)
   .then(() => {
-    return axios.get(`https://assignment-10-serverside-gyny.onrender.com/books/${id}/comments`);
+    return axios.get(`http://localhost:3000/books/${id}/comments`);
   })
   .then((res) => setComments(res.data))
       
@@ -61,8 +61,8 @@ const BookDetails = () => {
 
   return (
     <div className="min-h-screen md:py-12">
-      <div className="max-w-7xl mx-auto px-0 md:px-6 lg:px-8">
-        <div className="bg-gray-950 md:rounded-2xl shadow-xl overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-0 md:px-6 lg:px-8">
+        <div className="bg-white dark:bg-gray-900 md:rounded-2xl shadow-xl overflow-hidden">
           <div className="grid grid-cols-1 place-content-center md:grid-cols-3 gap-6 p-6 md:p-8">
             <div className="md:col-span-1 flex items-start">
               <div className="w-full">
@@ -81,9 +81,9 @@ const BookDetails = () => {
                 {book.title}
               </h1>
 
-              <p className="mt-2 text-sm lg:text-lg text-gray-300">
+              <p className="mt-2 text-sm lg:text-lg ">
                 by{" "}
-                <span className="font-medium text-green-300">
+                <span className="font-medium text-green-600">
                   {book.author}
                 </span>
               </p>
@@ -122,18 +122,18 @@ const BookDetails = () => {
                       </svg>
                     ))}
                   </div>
-                  <div className="text-sm lg:text-md text-gray-300 ml-2">
+                  <div className="text-sm lg:text-md ml-2">
                     {book.rating} / 5
                   </div>
                 </div>
               </div>
 
-              <div className="mt-6 text-gray-200 leading-relaxed text-base lg:text-lg">
+              <div className="mt-6  leading-relaxed text-base lg:text-lg">
                 {book.summary}
               </div>
 
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <div className="p-4 bg-gray-200 dark:bg-gray-700 rounded-lg">
                   <div className="text-xs text-gray-500 dark:text-gray-300">
                     Genre
                   </div>
@@ -142,11 +142,11 @@ const BookDetails = () => {
                   </div>
                 </div>
 
-                <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <div className="p-4 bg-gray-200 dark:bg-gray-700 rounded-lg">
                   <div className="text-xs text-gray-500 dark:text-gray-300">
                     Added by
                   </div>
-                  <div className="mt-1 font-medium text-secondary">
+                  <div className="mt-1 font-medium ">
                     {book.userEmail}
                   </div>
                 </div>
@@ -154,8 +154,8 @@ const BookDetails = () => {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 p-6 md:p-8">
-            <h2 className="text-xl font-semibold text-gray-100 mb-4">
+          <div className="border-t border-gray-200 dark:border-gray-800 p-6 md:p-8">
+            <h2 className="text-xl font-semibold  mb-4">
               Comments
             </h2>
 
@@ -164,20 +164,20 @@ const BookDetails = () => {
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
                 placeholder="Write your comment..."
-                className="w-full textarea textarea-bordered bg-gray-900 text-gray-100 placeholder-gray-400"
+                className="w-full textarea textarea-bordered  "
                 rows={4}></textarea>
 
               <div className="mt-3 flex gap-3">
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 rounded-md bg-secondary text-white hover:opacity-90 transition disabled:opacity-60">
+                  className="px-4 btn hover:bg-primary py-2 rounded-md bg-secondary text-white hover:opacity-90 transition disabled:opacity-60">
                   {submitting ? "Posting..." : "Post Comment"}
                 </button>
                 <button
                   type="button"
                   onClick={() => setNewComment("")}
-                  className="px-4 py-2 rounded-md border border-gray-700 text-gray-200">
+                  className="px-4 btn py-2 rounded-md border border-gray-700 ">
                   Clear
                 </button>
               </div>
@@ -192,7 +192,7 @@ const BookDetails = () => {
                 comments.map((c) => (
                   <div
                     key={c._id}
-                    className="flex gap-4 items-start bg-gray-900 p-4 rounded-lg">
+                    className="flex gap-4 items-start bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
                     <img
                       src={
                         c.photoURL ||
@@ -203,14 +203,14 @@ const BookDetails = () => {
                     />
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
-                        <div className="text-sm font-medium text-gray-100">
+                        <div className="text-sm font-medium">
                           {c.userName || "Anonymous"}
                         </div>
                         <div className="text-xs text-gray-500">
                           {new Date(c.createdAt).toLocaleString()}
                         </div>
                       </div>
-                      <p className="mt-1 text-gray-300">{c.text}</p>
+                      <p className="mt-1">{c.text}</p>
                     </div>
                   </div>
                 ))
