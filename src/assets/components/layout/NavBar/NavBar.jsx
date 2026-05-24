@@ -38,8 +38,9 @@ const Navbar = () => {
      }`;
 
   return (
-    <div className="navbar bg-white dark:bg-gray-900 shadow-md px-4">
-      <div className="navbar-start">
+    <div className="navbar fixed top-0 left-0 w-full z-50 flex justify-between bg-white dark:bg-gray-800 shadow-md px-4">
+
+      <div className="navbar-start min-w-60">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             ☰
@@ -47,7 +48,7 @@ const Navbar = () => {
 
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 p-3 shadow-lg bg-white dark:bg-gray-900 rounded-xl w-64 space-y-1"
+            className="menu menu-sm dropdown-content -ml-5 mt-3 p-3 shadow-lg bg-white dark:bg-gray-900 rounded-xl w-64 space-y-1"
           >
             <NavLink to="/" className={navItemClass}>
               <FaHome /> Home
@@ -73,7 +74,7 @@ const Navbar = () => {
               <FaInfoCircle /> About Us
             </NavLink>
 
-            <div className="flex items-center justify-between px-2 pt-2">
+            <div className="flex ml-3 items-center justify-between px-2 pt-2">
               <span className="text-sm text-gray-700 dark:text-gray-300">
                 {theme === "dark" ? "Dark" : "Light"}
               </span>
@@ -95,7 +96,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden lg:inline-block">
         <ul className="menu menu-horizontal gap-2">
           <NavLink to="/" className={navItemClass}>
             <FaHome /> Home
@@ -119,9 +120,9 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="navbar-end flex items-center gap-0 xs:gap-4">
-        <div className="hidden xs:flex items-center gap-2">
-          <span className="text-sm text-gray-700 dark:text-gray-300">
+      <div className="navbar-end  flex  items-center gap-0 xs:gap-4 sm:gap-4">
+        <div className="hidden xs:flex sm:flex items-center gap-2">
+          <span className="text-xs sm:text-sm text-gray-700 dark:text-gray-300">
             {theme === "dark" ? "Dark" : "Light"}
           </span>
           <input

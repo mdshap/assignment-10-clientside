@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 
 const ContactUs = () => {
   return (
-    <div className="w-full max-w-[1400px] mx-auto mb-20 px-6 2xl:px-0">
-      <h3 className="text-2xl font-semibold  text-white mb-7">
-        <span className="text-white bg-secondary pt-2 pb-1 px-4 inline-block  clip-trapezium">
+    <div className="w-full max-w-[1400px] mx-auto mb-10 sm:mb-20 px-6 2xl:px-0">
+      <h3 className="text-sm sm:text-2xl font-semibold  text-white mb-6">
+        <span className="text-white text-center bg-secondary py-1 sm:pt-2 px-2 sm:px-4 inline-block  clip-trapezium">
           Contact Us
         </span>
         <div className="w-full bg-secondary h-0.5 -mt-0.5"></div>

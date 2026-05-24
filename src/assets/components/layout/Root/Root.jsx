@@ -14,7 +14,7 @@ const Root = () => {
   }
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 max-w-[1600px] mx-auto">
+    <div className="bg-gray-50 dark:bg-gray-800/10 max-w-[1600px] mx-auto">
       <NavBar />
       <Tooltip
         id="my-tooltip"
@@ -27,7 +27,10 @@ const Root = () => {
         }}
       />
       <ReactToaster></ReactToaster>
-      <Outlet />
+      <div className="mt-20">
+        <Outlet />
+      </div>
+
       <Footer />
     </div>
   );

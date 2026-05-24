@@ -134,7 +134,7 @@ const Login = () => {
             {/* DEMO BUTTONS */}
             <div className="w-full text-center mt-4">
               <button
-                onClick={() => handleLogin("user@google.com", "USER009@ds")}
+                onClick={() => handleLogin("shapu34la@gmail.com", "BONDsms009@s")}
                 className="btn btn-outline border-secondary w-full text-secondary hover:bg-secondary hover:text-white"
               >
                 One Click Login (Demo User)

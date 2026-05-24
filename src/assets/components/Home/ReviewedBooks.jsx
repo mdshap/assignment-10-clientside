@@ -28,20 +28,11 @@ const reviews = [
     review:
       "Magical, emotional, and thrilling. One of the best books in the Harry Potter series.",
   },
-  {
-    id: 4,
-    user: "Imran Ahmed",
-    bookName: "Rich Dad Poor Dad",
-    genre: "Personal Finance",
-    rating: 4,
-    review:
-      "A great perspective on money and mindset. Helpful for understanding financial independence.",
-  },
 ];
 
 const RatingStars = ({ rating }) => {
   return (
-    <div className="flex gap-1">
+    <div className="flex text-xs sm:text-lg gap-1">
       {[...Array(5)].map((_, i) => (
         <span key={i} className={i < rating ? "text-yellow-400" : "text-gray-400"}>
           ★
@@ -53,33 +44,33 @@ const RatingStars = ({ rating }) => {
 
 const ReviewedBooks = () => {
   return (
-    <div className="w-full max-w-[1400px] mx-auto mb-20 px-6 2xl:px-0">
-      <h3 className="text-2xl font-semibold text-white mb-7">
-        <span className="text-white bg-secondary pt-2 pb-1 px-4 inline-block clip-trapezium">
+    <div className="w-full max-w-[1400px] mx-auto mb-10 sm:mb-20 px-6">
+      <h3 className="text-sm sm:text-2xl font-semibold  text-white mb-6">
+        <span className="text-white text-center bg-secondary py-1 sm:pt-2 px-2 sm:px-4 inline-block  clip-trapezium">
           Recently Reviewed
         </span>
         <div className="w-full bg-secondary h-0.5 -mt-0.5"></div>
       </h3>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-1.5 sm:gap-6">
         {reviews.map(({ id, user, bookName, genre, rating, review }) => (
           <div
             key={id}
-            className="bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6 hover:shadow-lg transition"
+            className="bg-white dark:bg-gray-900 rounded-2xl shadow-md p-3 px-4 sm:p-6 hover:shadow-lg transition"
           >
-            <div className="flex items-center justify-between mb-3">
-              <p className="font-semibold text-secondary">{user}</p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
+              <p className="text-xs sm:text-md font-semibold text-secondary">{user}</p>
               <RatingStars rating={rating} />
             </div>
 
-            <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h4 className="text-sm sm:text-lg font-semibold text-gray-900 dark:text-white">
               {bookName}
             </h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+            <p className="text-[10px] sm:text-sm text-gray-500 dark:text-gray-400 mb-3">
               Genre: {genre}
             </p>
 
-            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 text-[9px] sm:text-sm leading-relaxed">
               “{review}”
             </p>
           </div>

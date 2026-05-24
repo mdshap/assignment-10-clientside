@@ -60,18 +60,18 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <div className="w-full max-w-[1400px] mx-auto mb-20 px-6 2xl:px-0">
-      <h3 className="text-2xl font-semibold text-white mb-7">
-        <span className="text-white bg-secondary pt-2 pb-1 px-4 clip-trapezium hidden sm:inline-block">
+    <div className="w-full max-w-[1400px] mx-auto mb-10 sm:mb-20 px-6 2xl:px-0">
+      <h3 className="text-sm sm:text-2xl font-semibold  text-white mb-6">
+        <span className="text-white text-center bg-secondary py-1 sm:pt-2 px-2 sm:px-4 hidden sm:inline-block  clip-trapezium">
           Frequently Asked Questions
         </span>
-        <span className="text-white bg-secondary pt-2 pb-1 inline-block px-4 clip-trapezium sm:hidden">
+        <span className="text-white inline-block text-center bg-secondary py-1 sm:pt-2 px-2 sm:px-4 sm:hidden clip-trapezium">
           FAQs
         </span>
         <div className="w-full bg-secondary h-0.5 -mt-0.5"></div>
       </h3>
 
-      <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6 md:p-10 grid gap-4">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-md p-3 md:p-10 grid gap-4">
         {faqs.map(({ id, question, answer }) => (
           <div
             key={id}
