@@ -22,10 +22,10 @@ const BookDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`https://assignment-10-serverside-gyny.onrender.com/${id}/comments`)
+      .get(`https://assignment-10-serverside-gyny.onrender.com/books/${id}/comments`)
       .then((res) => setComments(res.data || []))
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [id, comments]);
 
   if (!book) return <Loader />;
 
@@ -45,19 +45,21 @@ const BookDetails = () => {
       photoURL: user?.photoURL,
     };
 
-    axios.post(`https://assignment-10-serverside-gyny.onrender.com/books/${id}/comments`, comment)
-  .then(() => {
-    return axios.get(`https://assignment-10-serverside-gyny.onrender.com/books/${id}/comments`);
-  })
-  .then((res) => setComments(res.data))
-      
+    axios
+      .post(
+        `https://assignment-10-serverside-gyny.onrender.com/books/${id}/comments`,
+        comment,
+      )
+      .then((res) => {
+        setComments((prev) => [...prev, res.data]);
+        setNewComment("");
+      })
+
       .catch((err) => {
         console.log(err);
       })
       .finally(() => setSubmitting(false));
-  
-};
-
+  };
 
   return (
     <div className="min-h-screen md:py-12">
@@ -146,18 +148,14 @@ const BookDetails = () => {
                   <div className="text-xs text-gray-500 dark:text-gray-300">
                     Added by
                   </div>
-                  <div className="mt-1 font-medium ">
-                    {book.userEmail}
-                  </div>
+                  <div className="mt-1 font-medium ">{book.userEmail}</div>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="border-t border-gray-200 dark:border-gray-800 p-6 md:p-8">
-            <h2 className="text-xl font-semibold  mb-4">
-              Comments
-            </h2>
+            <h2 className="text-xl font-semibold  mb-4">Comments</h2>
 
             <form onSubmit={handleCommentSubmit} className="mb-6">
               <textarea
@@ -184,12 +182,11 @@ const BookDetails = () => {
             </form>
 
             <div className="space-y-4">
-              {comments.length === 0 ? (
+              {comments.length === 0 ?
                 <div className="text-sm text-gray-400">
                   No comments yet. Be the first to comment.
                 </div>
-              ) : (
-                comments.map((c) => (
+              : comments.map((c) => (
                   <div
                     key={c._id}
                     className="flex gap-4 items-start bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
@@ -214,7 +211,7 @@ const BookDetails = () => {
                     </div>
                   </div>
                 ))
-              )}
+              }
             </div>
           </div>
         </div>
