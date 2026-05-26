@@ -6,6 +6,8 @@ import Loader from "../../Loader/Loader";
 import ReactToaster from "../../ReactToaster";
 import Footer from "../Footer/Footer";
 import { Tooltip } from "react-tooltip";
+import ScrollToTopButton from "../../../../ScrollTop/ScrollToTopButton";
+import GoToTop from "../../../../ScrollTop/GoToTop";
 
 const Root = () => {
   const { loading } = use(AuthContext);
@@ -14,7 +16,8 @@ const Root = () => {
   }
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-800/10 max-w-[1600px] mx-auto">
+    <div className=" max-w-[1600px] mx-auto">
+      <GoToTop/>
       <NavBar />
       <Tooltip
         id="my-tooltip"
@@ -30,6 +33,7 @@ const Root = () => {
       <div className="mt-20">
         <Outlet />
       </div>
+      <ScrollToTopButton/>
 
       <Footer />
     </div>

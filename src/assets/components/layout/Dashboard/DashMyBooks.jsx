@@ -10,20 +10,24 @@ const DashMyBooks = () => {
   const [dataLoading, setDataLoading] = useState(true);
 
   useEffect(() => {
-    if (!user?.email) return;
-
     axios
-      .get(`https://assignment-10-serverside-gyny.onrender.com/my-books/${user.email}`)
+      .get(
+        `https://assignment-10-serverside-gyny.onrender.com/my-books/${user?.email}`,
+      )
       .then((res) => {
         setMyBooks(res.data);
         setDataLoading(false);
       })
       .catch(() => setDataLoading(false));
-  }, [user?.email]);
+
+    if (!user?.email) return;
+  }, [user]);
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://assignment-10-serverside-gyny.onrender.com/my-books/${id}/${user.email}`)
+      .delete(
+        `https://assignment-10-serverside-gyny.onrender.com/my-books/${id}/${user.email}`,
+      )
       .then(() => {
         setMyBooks((prev) => prev.filter((b) => b._id !== id));
       })
@@ -38,8 +42,7 @@ const DashMyBooks = () => {
         bg-white dark:bg-gray-900
         rounded-xl shadow
         p-3 sm:p-4 md:p-6
-      "
-    >
+      ">
       <div className="mb-4 sm:mb-5">
         <h2 className="text-xl sm:text-2xl font-bold text-secondary">
           My Books
@@ -49,17 +52,14 @@ const DashMyBooks = () => {
         </p>
       </div>
 
-      {myBooks.length === 0 ? (
-        <div className="text-center py-12 sm:py-20 text-gray-500">
-          <p className="text-base sm:text-lg font-medium">
-            No books added yet
-          </p>
+      {myBooks.length === 0 ?
+        <div className="text-center min-h-[50vh] py-12 sm:py-20 text-gray-500">
+          <p className="text-base sm:text-lg font-medium">No books added yet</p>
           <p className="text-xs sm:text-sm mt-1">
             Start by adding books from the Add Book page
           </p>
         </div>
-      ) : (
-        <div className="overflow-x-auto">
+      : <div className="overflow-x-auto min-h-screen">
           <table className="table w-full">
             <thead className="hidden md:table-header-group">
               <tr className="bg-pink-100 dark:bg-gray-800">
@@ -84,7 +84,7 @@ const DashMyBooks = () => {
             </tbody>
           </table>
         </div>
-      )}
+      }
     </div>
   );
 };

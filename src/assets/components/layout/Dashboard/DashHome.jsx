@@ -30,13 +30,17 @@ const DashHome = () => {
   const [myBooks, setMyBooks] = useState([]);
 
   useEffect(() => {
-    axios.get("https://assignment-10-serverside-gyny.onrender.com/books").then((res) => {
-      setAllBooks(res.data);
-    });
+    axios
+      .get("https://assignment-10-serverside-gyny.onrender.com/books")
+      .then((res) => {
+        setAllBooks(res.data);
+      });
 
     if (user?.email) {
       axios
-        .get(`https://assignment-10-serverside-gyny.onrender.com/my-books/${user.email}`)
+        .get(
+          `https://assignment-10-serverside-gyny.onrender.com/my-books/${user.email}`,
+        )
         .then((res) => setMyBooks(res.data));
     }
   }, [user]);
@@ -74,7 +78,7 @@ const DashHome = () => {
         };
         acc[book.genre].value += 1;
         return acc;
-      }, {})
+      }, {}),
     );
 
   const allBooksBar = createRatingBuckets(allBooks);
@@ -89,40 +93,38 @@ const DashHome = () => {
 
   return (
     <div className="space-y-10">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div className="bg-white dark:bg-gray-900 p-5 rounded-xl shadow">
-          <p className="text-sm text-gray-500">Total Books (Website)</p>
-          <h3 className="text-2xl font-bold text-secondary">
+      <div className="grid grid-cols-3 gap-4">
+        <div className="bg-white not-sm:text-center dark:bg-gray-900 p-2 sm:p-5 rounded-xl shadow">
+          <p className="text-sm text-gray-500">Total Books</p>
+          <h3 className="text-xl sm:text-2xl font-bold text-secondary">
             {allBooks.length}
           </h3>
         </div>
 
-        <div className="bg-white dark:bg-gray-900 p-5 rounded-xl shadow">
+        <div className="bg-white not-sm:text-center dark:bg-gray-900 p-2 sm:p-5 rounded-xl shadow">
           <p className="text-sm text-gray-500">Your Books</p>
-          <h3 className="text-2xl font-bold text-pink-500">
+          <h3 className="text-xl sm:text-2xl font-bold text-pink-500">
             {myBooks.length}
           </h3>
         </div>
 
-        <div className="bg-white dark:bg-gray-900 p-5 rounded-xl shadow">
-          <p className="text-sm text-gray-500">Your Avg Rating</p>
-          <h3 className="text-2xl font-bold text-yellow-500">
+        <div className="bg-white not-sm:text-center dark:bg-gray-900 p-2 sm:p-5 rounded-xl shadow">
+          <p className="text-sm text-gray-500">Avg Rating</p>
+          <h3 className="text-xl sm:text-2xl font-bold text-yellow-500">
             {avgMyRating.toFixed(1)}
           </h3>
         </div>
       </div>
 
       <section>
-        <h3 className="text-lg font-semibold mb-4">
-          Website Analytics
-        </h3>
+        <h3 className="text-lg font-semibold mb-2 sm:mb-4">Website Analytics</h3>
 
-        <div className="grid lg:grid-cols-2 gap-6">
-          <div className="bg-white dark:bg-gray-900 p-4 rounded-xl shadow">
-            <h4 className="font-medium mb-3">
+        <div className="grid grid-cols-2 gap-1.5 sm:gap-6">
+          <div className="bg-white dark:bg-gray-900  p-2 sm:p-4 rounded-xl shadow">
+            <h4 className="text-xs sm:text-md mb-3">
               All Books Rating Distribution
             </h4>
-            <div className="h-64">
+            <div className="h-32 sm:h-64 -ml-12">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={allBooksBar}>
                   <XAxis dataKey="rating" />
@@ -134,20 +136,18 @@ const DashHome = () => {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-gray-900 p-4 rounded-xl shadow">
-            <h4 className="font-medium mb-3">
-              All Books by Genre
-            </h4>
-            <div className="h-64">
+          <div className="bg-white dark:bg-gray-900  p-4 rounded-xl shadow">
+            <h4 className="text-xs sm:text-md mb-3">All Books by Genre</h4>
+            <div className="not-sm:h-32 h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
+                    className=""
                     data={allBooksPie}
                     dataKey="value"
                     nameKey="name"
-                    outerRadius={95}
-                    label
-                  >
+                    outerRadius={window.innerWidth < 640 ? 40 : 95}
+                    label>
                     {allBooksPie.map((_, i) => (
                       <Cell key={i} fill={COLORS[i % COLORS.length]} />
                     ))}
@@ -159,17 +159,16 @@ const DashHome = () => {
           </div>
         </div>
       </section>
-      <section>
-        <h3 className="text-lg font-semibold mb-4">
-          Your Book Analytics
-        </h3>
 
-        <div className="grid lg:grid-cols-2 gap-6">
+      <section>
+        <h3 className="text-lg font-semibold mb-2 sm:mb-4">Your Book Analytics</h3>
+
+        <div className="grid grid-cols-2 gap-1.5 sm:gap-6">
           <div className="bg-white dark:bg-gray-900 p-4 rounded-xl shadow">
-            <h4 className="font-medium mb-3">
+            <h4 className="text-xs sm:text-md mb-3">
               Your Books Rating Distribution
             </h4>
-            <div className="h-64">
+            <div className="h-32 sm:h-64 -ml-12">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={myBooksBar}>
                   <XAxis dataKey="rating" />
@@ -182,19 +181,16 @@ const DashHome = () => {
           </div>
 
           <div className="bg-white dark:bg-gray-900 p-4 rounded-xl shadow">
-            <h4 className="font-medium mb-3">
-              Your Books by Genre
-            </h4>
-            <div className="h-64">
+            <h4 className="text-xs sm:text-md mb-3">Your Books by Genre</h4>
+            <div className="not-sm:h-32 h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     data={myBooksPie}
                     dataKey="value"
                     nameKey="name"
-                    outerRadius={95}
-                    label
-                  >
+                    outerRadius={window.innerWidth < 640 ? 40 : 95}
+                    label>
                     {myBooksPie.map((_, i) => (
                       <Cell key={i} fill={COLORS[i % COLORS.length]} />
                     ))}
@@ -208,9 +204,7 @@ const DashHome = () => {
       </section>
 
       <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4">
-        <h4 className="font-semibold mb-3">
-          Recently Added by You
-        </h4>
+        <h4 className="font-semibold mb-3">Recently Added by You</h4>
 
         <div className="overflow-x-auto">
           <table className="table">

@@ -21,7 +21,7 @@ const Banner = ({
     <section 
       className={`w-full max-w-[1400px] mx-auto px-2 sm:px-4 md:px-6 lg:px-8 bg-transparent ${className}`}>
       
-      <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 md:gap-6 rounded-2xl overflow-hidden shadow-lg">
+      <div className="flex flex-col mt-25 sm:flex-row gap-2 sm:gap-4 md:gap-6 rounded-2xl overflow-hidden shadow-lg">
         
         <div
           className=" animate-slide-left relative flex-1 min-h-[180px] sm:min-h-[220px] md:min-h-80 transform transition duration-700 hover:scale-[1.02]"
@@ -72,7 +72,7 @@ const Banner = ({
 
             <div className="mt-4">
               <Link
-                to="/add-book"
+                to="/dashboard/add-book"
                 className="inline-block px-5 py-2  rounded-md  bg-primary text-white text-sm sm:text-lg font-medium shadow-sm  transition hover:translate-y-[-2px] hover:bg-green-600">
                 Add a Book
               </Link>

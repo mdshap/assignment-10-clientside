@@ -7,39 +7,6 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
 
   return (
     <>
-      <dialog open={deleteModalOpen} className="modal">
-        <div className="modal-box max-w-sm">
-          <p className="text-lg font-medium text-center">
-            Delete this book?
-          </p>
-
-          <div className="modal-action justify-center gap-4">
-            <button
-              onClick={() => {
-                handleDelete(book._id);
-                setDeleteModalOpen(false);
-              }}
-              className="btn bg-red-500 text-white px-6"
-            >
-              Yes
-            </button>
-            <button
-              onClick={() => setDeleteModalOpen(false)}
-              className="btn bg-gray-300 text-black px-6"
-            >
-              No
-            </button>
-          </div>
-        </div>
-      </dialog>
-
-      <UpdateModal
-        book={book}
-        setMyBooks={setMyBooks}
-        updateModalOpen={updateModalOpen}
-        setUpdateModalOpen={setUpdateModalOpen}
-      />
-
       <tr className="hidden md:table-row align-middle">
         <td className="hidden lg:table-cell">{count}</td>
 
@@ -50,35 +17,27 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
               alt={book.title}
               className="w-14 h-20 object-cover rounded-md"
             />
-            <div className="min-w-0">
-              <p className="font-semibold truncate">{book.title}</p>
-              <p className="text-sm text-gray-500 truncate">
-                {book.author}
-              </p>
+            <div className="">
+              <p className="font-semibold">{book.title}</p>
+              <p className="text-sm text-gray-500 ">{book.author}</p>
             </div>
           </div>
         </td>
 
-        <td className="text-center text-yellow-500 font-bold">
-          {book.rating}
-        </td>
+        <td className="text-center text-yellow-500 font-bold">{book.rating}</td>
 
-        <td className="hidden sm:table-cell capitalize">
-          {book.genre}
-        </td>
+        <td className="hidden sm:table-cell capitalize">{book.genre}</td>
 
         <td>
           <div className="flex flex-col gap-2 w-max">
             <button
               onClick={() => setUpdateModalOpen(true)}
-              className="btn btn-xs bg-green-500 text-white"
-            >
+              className="btn btn-xs bg-green-500 text-white">
               Update
             </button>
             <button
               onClick={() => setDeleteModalOpen(true)}
-              className="btn btn-xs bg-red-500 text-white"
-            >
+              className="btn btn-xs bg-red-500 text-white">
               Delete
             </button>
           </div>
@@ -94,8 +53,7 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
               border border-pink-100 dark:border-gray-800
               p-3
               mb-3
-            "
-          >
+            ">
             <div className="flex gap-3">
               <img
                 src={book.coverImage}
@@ -104,13 +62,9 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
               />
 
               <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-sm truncate">
-                  {book.title}
-                </h3>
+                <h3 className="font-semibold text-sm truncate">{book.title}</h3>
 
-                <p className="text-xs text-gray-500 truncate">
-                  {book.author}
-                </p>
+                <p className="text-xs text-gray-500 truncate">{book.author}</p>
 
                 <div className="flex flex-wrap items-center gap-1.5 mt-1 text-xs">
                   <span className="px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-700">
@@ -134,8 +88,7 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
                       flex
                       items-center
                       justify-center
-                    "
-                  >
+                    ">
                     Update
                   </button>
 
@@ -151,8 +104,7 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
                       flex
                       items-center
                       justify-center
-                    "
-                  >
+                    ">
                     Delete
                   </button>
                 </div>
@@ -161,6 +113,34 @@ const MyBooksBody = ({ book, count, setMyBooks, handleDelete }) => {
           </div>
         </td>
       </tr>
+      <dialog open={deleteModalOpen} className="modal">
+        <div className="modal-box max-w-sm">
+          <p className="text-lg font-medium text-center">Delete this book?</p>
+
+          <div className="modal-action justify-center gap-4">
+            <button
+              onClick={() => {
+                handleDelete(book._id);
+                setDeleteModalOpen(false);
+              }}
+              className="btn bg-red-500 text-white px-6">
+              Yes
+            </button>
+            <button
+              onClick={() => setDeleteModalOpen(false)}
+              className="btn bg-gray-300 text-black px-6">
+              No
+            </button>
+          </div>
+        </div>
+      </dialog>
+
+      <UpdateModal
+        book={book}
+        setMyBooks={setMyBooks}
+        updateModalOpen={updateModalOpen}
+        setUpdateModalOpen={setUpdateModalOpen}
+      />
     </>
   );
 };

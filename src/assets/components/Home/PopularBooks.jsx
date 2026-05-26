@@ -33,7 +33,7 @@ const PopularBooks = () => {
   }
 
   return (
-    <div className="w-full max-w-[1400px] mx-auto bg-transparent mt-10 sm:mt-25 mb-10 sm:mb-20 px-2 sm:px-6">
+    <div className="w-full max-w-[1400px] mx-auto bg-transparent mt-10 sm:mt-10 mb-10 sm:mb-20 px-2 sm:px-6">
       <h3 className="text-sm sm:text-2xl font-semibold  text-white mb-6">
         <span className="text-white text-center bg-secondary py-1 sm:pt-2 px-2 sm:px-4 inline-block  clip-trapezium">
           Latest Books

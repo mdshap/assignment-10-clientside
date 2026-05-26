@@ -7,7 +7,7 @@ const BookCard = ({ book }) => {
 
 
   return (
-    <article className="w-full max-w-[130px] xs:max-w-[270px] sm:max-w-[270px] bg-white dark:bg-gray-900 rounded-md shadow-md overflow-hidden transform transition hover:-translate-y-1 hover:shadow-xl">
+    <Link to={`/book-details/${book?._id}`}  className="w-full max-w-[130px] xs:max-w-[270px] sm:max-w-[270px] bg-white dark:bg-gray-900 rounded-md shadow-md overflow-hidden transform transition hover:-translate-y-1 hover:shadow-xl">
       <div
         className="h-40 sm:h-90 bg-top bg-cover"
         style={{ backgroundImage: `url(${book?.coverImage})` }}
@@ -43,14 +43,14 @@ const BookCard = ({ book }) => {
           <Link to={`/book-details/${book?._id}`} className="flex-1 inline-flex items-center justify-center rounded-sm px-1 py-0.5 sm:px-3 sm:py-1.25 text-[9px] sm:text-sm font-medium bg-secondary text-white hover:bg-indigo-700 transition" >Details</Link>
 
           <button
-            className="flex-1 inline-flex items-center justify-center rounded-md px-1 py-0.5 sm:px-3 sm:py-1.25 text-[9px] sm:text-sm font-medium border border-secondary hover:border-primary text-secondary hover:text-primary  dark:hover:bg-indigo-900/40 transition">
+            className="flex-1 z-40 inline-flex items-center justify-center rounded-md px-1 py-0.5 sm:px-3 sm:py-1.25 text-[9px] sm:text-sm font-medium border border-secondary hover:border-primary text-secondary hover:text-primary  dark:hover:bg-indigo-900/40 transition">
             <a 
             target="_blank"
             href="https://vidyaprabodhinicollege.edu.in/VPCCECM/ebooks/ENGLISH%20LITERATURE/Harry%20potter/(Book%207)%20Harry%20Potter%20And%20The%20Deathly%20Hallows.pdf">Read</a>
           </button>
         </div>
       </div>
-    </article>
+    </Link>
   );
 };
 

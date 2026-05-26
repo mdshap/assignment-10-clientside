@@ -35,8 +35,8 @@ const DashNavbar = () => {
   };
 
   return (
-    <header className="h-13.25 bg-white dark:bg-gray-900 border-b dark:border-gray-800 flex items-center justify-between px-4 sticky z-50 top-0 shadow-md">
-      <h2 className="font-semibold text-gray-700 dark:text-gray-200">
+    <header className="h-13.25 md:h-15 bg-white dark:bg-gray-900  flex items-center justify-between px-4 sticky z-50 top-0 shadow-md">
+      <h2 className="font-semibold  text-gray-700 dark:text-gray-200">
         Dashboard
       </h2>
 

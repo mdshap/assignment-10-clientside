@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router";
 import { FaBookOpen, FaHome, FaBook, FaStar } from "react-icons/fa";
 import { LuLogOut } from "react-icons/lu";
 import { AuthContext } from "../../Contexts/AuthContext";
+import { RxDashboard } from "react-icons/rx";
 
 const DashSidebar = () => {
   const { signOutUser } = use(AuthContext);
@@ -19,7 +20,7 @@ const DashSidebar = () => {
     return () => mq.removeEventListener("change", handle);
   }, []);
 
-  const sidebarWidth = collapsed ? "w-16" : "w-60";
+  const sidebarWidth = collapsed ? "min-w-12" : "w-60";
 
   const navItem = ({ isActive }) =>
     `
@@ -34,18 +35,18 @@ const DashSidebar = () => {
 
   return (
     <aside
-      className={`sticky top-0 h-screen bg-white dark:bg-gray-900 border-r dark:border-gray-800 shadow-lg transition-all duration-200 ${sidebarWidth}`}
+      className={`sticky top-0 h-screen  bg-white dark:bg-gray-900  shadow-lg transition-all duration-200 ${sidebarWidth}`}
     >
       <div
-        className={`flex items-center gap-3 border-b dark:border-gray-800 py-4 ${
+        className={`flex bg-secondary items-center gap-3  py-4 ${
           collapsed ? "justify-center" : "px-5"
         }`}
       >
         <Link to="/" className="flex items-center gap-2">
-          <FaBookOpen className="text-secondary text-xl shrink-0" />
+          <FaBookOpen className="text-white text-xl" />
           {!collapsed && (
-            <span className="font-bold text-lg text-gray-800 dark:text-white">
-              Books <span className="text-secondary">Haven</span>
+            <span className="font-bold text-lg text-white">
+              Books <span className="text-white">Haven</span>
             </span>
           )}
         </Link>
@@ -66,7 +67,8 @@ const DashSidebar = () => {
         </Link>
 
         <NavLink to="/dashboard" end className={navItem}>
-          <FaHome className="text-lg shrink-0" />
+          
+          <RxDashboard className="text-lg shrink-0" />
           {!collapsed && <span>Dashboard</span>}
         </NavLink>
 
