@@ -8,8 +8,8 @@
 ---
 
 ## 🚀 Live Links
-- 🌐 **Live Website:** [https://zingy-starship-a00546.netlify.app/](https://gleaming-peony-d597c8.netlify.app/#/)
-- 🖥️ **Backend API:** [https://assignment-11-sever.onrender.com/](https://assignment-10-serverside-gyny.onrender.com/)
+- 🌐 **Live Website:** [https://books-haven-25.netlify.app/](https://books-haven-25.netlify.app/)
+- 🖥️ **Backend API:** [https://assignment-10-serverside-gyny.onrender.com/](https://assignment-10-serverside-gyny.onrender.com/)
 
 ---
 
